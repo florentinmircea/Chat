@@ -45,5 +45,10 @@ namespace Chat
         {
 
         }
+
+        public void paintPanel(Color color)
+        {
+            panel2.BackColor = color;
+        }
     }
 }

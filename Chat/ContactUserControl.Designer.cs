@@ -63,10 +63,10 @@ namespace Chat
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(9, 16);
+            this.pictureBox1.Location = new System.Drawing.Point(25, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -124,7 +124,7 @@ namespace Chat
         private System.Windows.Forms.PictureBox contactProfilePicture;
         private System.Windows.Forms.Label contactUsernameLabel;
         private System.Windows.Forms.Label contactLastMessageLabel;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
