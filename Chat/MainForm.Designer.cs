@@ -191,6 +191,7 @@ namespace Chat
             this.groupBox_conv.TabIndex = 8;
             this.groupBox_conv.TabStop = false;
             this.groupBox_conv.Text = "usenameContact";
+            this.groupBox_conv.Enter += new System.EventHandler(this.groupBox_conv_Enter);
             // 
             // label_cityContact
             // 
@@ -246,6 +247,7 @@ namespace Chat
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox_myProfile.ResumeLayout(false);
             this.groupBox_myProfile.PerformLayout();

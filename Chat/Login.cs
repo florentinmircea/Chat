@@ -17,12 +17,17 @@ namespace Chat
 {
     public partial class Login : Form
     {
-        IFirebaseConfig config = new FirebaseConfig
+        public static bool isAuth = false;
+        bool newUser = false;
+        int currentUserIndex;
+        Dictionary<string, User> userDictionary;
+        List<User> userList = new List<User>();
+        public static IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "inXj8sTPJUWlgLwQVJZSR2p4NR7EeJ4xZwHobH09",
             BasePath = "https://poli-chat-db-default-rtdb.firebaseio.com/"
         };
-        IFirebaseClient client;
+        public static IFirebaseClient client;
         public Login()
         {
             InitializeComponent();
@@ -32,15 +37,25 @@ namespace Chat
             else
                 MessageBox.Show("Connection error"); 
         }
-        private string users = "";
-        async private void get_users()
+        private async void Get_users()
         {
-            //Task response = await client.Get(@"poli-chat-db-default-rtdb/users");
-            //string ResUser = response.ResultAs<string>();// database result
-            
+            var response = await client.GetAsync("users");
+            userDictionary = response.ResultAs<Dictionary<string, User>>();
+            if(userDictionary!=null)
+            {
+                var aux = from x in userDictionary select x;
+                foreach(var item in aux)
+                {
+                    userList.Add(item.Value);
+                }
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            if(newUser)
+            {
+                Get_users();
+            }
             string current_username = textBox1.Text;
             string current_password = textBox2.Text;
             if (current_password == "" || current_username == "")
@@ -49,12 +64,44 @@ namespace Chat
             }
             else
             {
-                //get_users();
-                //MessageBox.Show(users);
+                
+                for (int i = 0; i < userList.Count; i++)
+                {
+                    if(userList[i].username==current_username && userList[i].password==current_password)
+                    {
+                        isAuth = true;
+                        currentUserIndex = i;
+                        break;
+                    }
+                }
+                if(isAuth)
+                {
+                    textBox2.Text = "";
+                    this.Hide();
+                    MainForm mainForm = new MainForm(this,userList[currentUserIndex].fullName);
+                    mainForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong Username or password!");
+                }
             }
+            
+            
+            
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            Get_users();
+        }
+
+        private void label_Register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            newUser = true;
             this.Hide();
-            MainForm mainForm = new MainForm(this);
-            mainForm.ShowDialog();
+            Register registerForm = new Register(this);
+            registerForm.ShowDialog();
         }
     }
 }
