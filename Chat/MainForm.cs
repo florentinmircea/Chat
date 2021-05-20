@@ -13,11 +13,9 @@ namespace Chat
     public partial class MainForm : Form
     {
         Login pointer;
-        string fullName;
-        public MainForm(Login point,string fullname)
+        public MainForm(Login point)
         {
             pointer = point;
-            fullName = fullname;
             InitializeComponent();
             populateList();
             checkList();
@@ -58,7 +56,11 @@ namespace Chat
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label_username.Text = fullName;
+            label_username.Text = Login.userList[Login.currentUserIndex].fullName;
+            label_varsta.Text = Login.userList[Login.currentUserIndex].age;
+            label_city.Text = Login.userList[Login.currentUserIndex].city;
+            pictureBox1.ImageLocation= Login.userList[Login.currentUserIndex].picture;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

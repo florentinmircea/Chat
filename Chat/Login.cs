@@ -18,10 +18,9 @@ namespace Chat
     public partial class Login : Form
     {
         public static bool isAuth = false;
-        bool newUser = false;
-        int currentUserIndex;
-        Dictionary<string, User> userDictionary;
-        List<User> userList = new List<User>();
+        public static int currentUserIndex;
+        static Dictionary<string, User> userDictionary;
+        public static List<User> userList = new List<User>();
         public static IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "inXj8sTPJUWlgLwQVJZSR2p4NR7EeJ4xZwHobH09",
@@ -37,7 +36,7 @@ namespace Chat
             else
                 MessageBox.Show("Connection error"); 
         }
-        private async void Get_users()
+        public static async void Get_users()
         {
             var response = await client.GetAsync("users");
             userDictionary = response.ResultAs<Dictionary<string, User>>();
@@ -52,10 +51,6 @@ namespace Chat
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if(newUser)
-            {
-                Get_users();
-            }
             string current_username = textBox1.Text;
             string current_password = textBox2.Text;
             if (current_password == "" || current_username == "")
@@ -78,7 +73,7 @@ namespace Chat
                 {
                     textBox2.Text = "";
                     this.Hide();
-                    MainForm mainForm = new MainForm(this,userList[currentUserIndex].fullName);
+                    MainForm mainForm = new MainForm(this);
                     mainForm.ShowDialog();
                 }
                 else
@@ -98,10 +93,14 @@ namespace Chat
 
         private void label_Register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            newUser = true;
             this.Hide();
             Register registerForm = new Register(this);
             registerForm.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

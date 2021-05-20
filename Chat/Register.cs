@@ -34,10 +34,17 @@ namespace Chat
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            string Email=email_Textbox.Text, Fullname=fullname_Textbox.Text, Username=username_Textbox.Text, Password=password_Textbox.Text, Confirmpassword=confirmPass_Textbox.Text, Picturelink=picture_Textbox.Text;
-            if(Email.Length>4 && Fullname.Length>4 && Username.Length>4 && Picturelink.Length>4)
+            bool isMailValid = false;
+            string Email=email_Textbox.Text, Fullname=fullname_Textbox.Text, Username=username_Textbox.Text, Password=password_Textbox.Text, Confirmpassword=confirmPass_Textbox.Text, Picturelink=picture_Textbox.Text,City=city_Textbox.Text,Age=age_Textbox.Text;
+            if(Email.Length > 6)
             {
-                if(Password==Confirmpassword)
+                var addr = new System.Net.Mail.MailAddress(Email);
+                isMailValid = addr.Address == Email ? true : false;
+            }
+            
+            if (isMailValid && Fullname.Length>6 && Username.Length>6 && Picturelink.Length>6 && Convert.ToInt32(Age)>17 && City.Length>4)
+            {
+                if(Password==Confirmpassword && Password.Length>=6)
                 {
                     var user = new User
                     {
@@ -45,11 +52,13 @@ namespace Chat
                         fullName=Fullname,
                         username=Username,
                         password=Password,
-                        picture=Picturelink
-                        
+                        picture=Picturelink,
+                        age=Age,
+                        city=City
                     };
                     PushResponse response = await Login.client.PushAsync("users", user);
                     MessageBox.Show("User created!");
+                    Login.Get_users();
                     this.Close();
                     pointer.Show();
                 }
@@ -60,7 +69,10 @@ namespace Chat
             }
             else
             {
-                MessageBox.Show("Complete all the fields!");
+                if(Convert.ToInt32(Age) > 17)
+                    MessageBox.Show("Complete all the fields!");
+                else
+                    MessageBox.Show("Minimum age 17!");
             }
         }
 
