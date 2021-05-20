@@ -84,7 +84,7 @@ namespace Chat
         }
         private void checkList()
         {
-            MessageBox.Show(contactListFlowLayoutPanel.Controls.Count.ToString());
+            // MessageBox.Show(contactListFlowLayoutPanel.Controls.Count.ToString());
         }
         private void button_searchContact_Click(object sender, EventArgs e)
         {
@@ -94,6 +94,21 @@ namespace Chat
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             pointer.Show();
+            Login.isAuth = false;
+        }
+
+        private void groupBox_conv_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            label_username.Text = Login.userList[Login.currentUserIndex].fullName;
+            label_varsta.Text = Login.userList[Login.currentUserIndex].age;
+            label_city.Text = Login.userList[Login.currentUserIndex].city;
+            pictureBox1.ImageLocation= Login.userList[Login.currentUserIndex].picture;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void blueLagoonToolStripMenuItem_Click(object sender, EventArgs e)
