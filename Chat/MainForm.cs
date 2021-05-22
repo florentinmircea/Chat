@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,9 @@ namespace Chat
         Login pointer;
         private Color[] colorScheme;
         private string colorMode;
+        static List<Message> messageListLocal = new List<Message>();
+        static List<messageBlob> messageBlobList = new List<messageBlob>();
+        public messageController mc;
         public MainForm(Login point)
         {
             pointer = point;
@@ -25,8 +30,8 @@ namespace Chat
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
-        }
 
+        }
         private void SetColorScheme(Color lightColor, Color mediumColor, Color darkColor)
         {
             colorScheme[0] = lightColor;
@@ -43,7 +48,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[1];
                 groupBox_myProfile.BackColor = colorScheme[1];
-                listBox_conv.BackColor = colorScheme[0];
+                //listBox_conv.BackColor = colorScheme[0];
                 richTextBox_conv.BackColor = colorScheme[0];
                 contactListFlowLayoutPanel.BackColor = colorScheme[0];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -59,7 +64,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[2];
                 groupBox_myProfile.BackColor = colorScheme[2];
-                listBox_conv.BackColor = colorScheme[1];
+                //listBox_conv.BackColor = colorScheme[1];
                 richTextBox_conv.BackColor = colorScheme[1];
                 contactListFlowLayoutPanel.BackColor = colorScheme[1];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -70,12 +75,14 @@ namespace Chat
             }
         }
 
+
+
         private void populateList()
         {
             ContactUserControl[] contactList = new ContactUserControl[10];
             for (int i = 0; i < contactList.Length; i++)
             {
-                contactList[i] = new ContactUserControl();
+                contactList[i] = new ContactUserControl(this);
                 contactList[i].UserName = "Contact " + i;
                 contactList[i].LastMessage = "Message blah";
                 contactList[i].ProfilePicture = Resource.defaultProfilePicture;
@@ -109,6 +116,7 @@ namespace Chat
             label_city.Text = Login.userList[Login.currentUserIndex].city;
             pictureBox1.ImageLocation= Login.userList[Login.currentUserIndex].picture;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
         }
 
         private void blueLagoonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,5 +169,20 @@ namespace Chat
                 colorMode = "DARK";
             RefreshColorScheme(colorMode);
         }
+
+        //public void messageController()
+        public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
+        {
+            messageListLocal = messageList;
+            messagesFlowLayout.Controls.Clear();
+            foreach (var x in messageListLocal)
+            {
+                messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
+                //messageBlobList.Add(msb);
+                //messagesFlowLayout.Controls.Add(msb);
+                messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
+            }
+        }
     }
+
 }

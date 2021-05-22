@@ -97,6 +97,7 @@ namespace Chat
             this.contactLastMessageLabel.Size = new System.Drawing.Size(46, 17);
             this.contactLastMessageLabel.TabIndex = 3;
             this.contactLastMessageLabel.Text = "label2";
+            this.contactLastMessageLabel.Click += new System.EventHandler(this.contactLastMessageLabel_Click);
             // 
             // ContactUserControl
             // 

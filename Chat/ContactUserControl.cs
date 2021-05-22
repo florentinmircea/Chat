@@ -12,9 +12,14 @@ namespace Chat
 {
     public partial class ContactUserControl : UserControl
     {
-        public ContactUserControl()
+        //private string 
+        MainForm mainForm;
+
+        public ContactUserControl(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+
         }
 
         private String _userName;
@@ -49,6 +54,16 @@ namespace Chat
         public void paintPanel(Color color)
         {
             panel2.BackColor = color;
+        }
+
+        private void contactLastMessageLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContactUserControl_Click(object sender, EventArgs e)
+        {
+            //mainForm.messageModel("v","vds");
         }
     }
 }

@@ -57,6 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Message.cs" />
+    <Compile Include="messageBlob.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="messageBlob.Designer.cs">
+      <DependentUpon>messageBlob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="messageController.cs" />
+    <Compile Include="messageModel.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="messageBlob.resx">
+      <DependentUpon>messageBlob.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
