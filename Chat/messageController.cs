@@ -26,12 +26,20 @@ namespace Chat
 
         public void updateView(List<Message> messageList, string currentUser, string otherUser)
         {
-            mf.updateView(messageList, currentUser, otherUser);
+            mf.updateMessageView(messageList, currentUser, otherUser);
+        }
+
+        public void updateOtherUser(string otherUser)
+        {
+            this.otherUser = otherUser;
         }
 
         public void permanentThread()
         {
-            mm.messageUpdateMessage(currentUser, otherUser);
+            if (otherUser != "")
+            {
+                mm.messageUpdateMessage(currentUser, otherUser);
+            }
             Thread.Sleep(milliseconds);
         }
 

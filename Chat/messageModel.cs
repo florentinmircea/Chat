@@ -39,10 +39,6 @@ namespace Chat
 
         public async void messageUpdateMessage(string currentUser, string otherUser)
         {
-            //MessageBox.Show("Current user index : " + currentUser + ", Receiver User Index = " + otherUser);
-            //alphabetical order
-            currentUser = "florentinmircea";
-            otherUser = "robertbudai";
             string firstUser;
             string secondUser;
             if (String.Compare(currentUser, otherUser) > 0)
