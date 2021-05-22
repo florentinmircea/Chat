@@ -62,7 +62,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[1];
                 groupBox_myProfile.BackColor = colorScheme[1];
-                //listBox_conv.BackColor = colorScheme[0];
+                messagesFlowLayout.BackColor = colorScheme[0];
                 richTextBox_conv.BackColor = colorScheme[0];
                 contactListFlowLayoutPanel.BackColor = colorScheme[0];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -70,6 +70,17 @@ namespace Chat
                 groupBox_conv.ForeColor = Color.Black;
                 groupBox_myProfile.ForeColor = Color.Black;
                 label_darkMode.ForeColor = Color.Black;
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[1];
+                        msb.ForeColor = Color.Black;
+                    }
             }
             else if (colorMode.Equals("DARK"))
             {
@@ -78,7 +89,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[2];
                 groupBox_myProfile.BackColor = colorScheme[2];
-                //listBox_conv.BackColor = colorScheme[1];
+                messagesFlowLayout.BackColor = colorScheme[1];
                 richTextBox_conv.BackColor = colorScheme[1];
                 contactListFlowLayoutPanel.BackColor = colorScheme[1];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -86,6 +97,17 @@ namespace Chat
                 groupBox_conv.ForeColor = colorScheme[0];
                 groupBox_myProfile.ForeColor = colorScheme[0];
                 label_darkMode.ForeColor = colorScheme[0];
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[0];
+                        msb.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
             }
         }
 
@@ -224,6 +246,38 @@ namespace Chat
                 messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
                 messageBlobList.Add(msb);
                 messagesFlowLayout.Controls.Add(msb);
+            }
+        }
+
+        private void messagesFlowLayout_ControlAdded(object sender, ControlEventArgs e)
+        {
+            if (colorMode.Equals("LIGHT"))
+            {
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[1];
+                        msb.ForeColor = Color.Black;
+                    }
+            }
+            else if (colorMode.Equals("DARK"))
+            {
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[0];
+                        msb.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
             }
         }
     }

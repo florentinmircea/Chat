@@ -29,15 +29,15 @@ namespace Chat
 
             if (!sender)
             {
-                label1.Dock = DockStyle.Right;
-                label2.Dock = DockStyle.Right;
-                label3.Dock = DockStyle.Right;
-            }
-            else
-            {
                 label1.Dock = DockStyle.Left;
                 label2.Dock = DockStyle.Left;
                 label3.Dock = DockStyle.Left;
+            }
+            else
+            {
+                label1.Dock = DockStyle.Right;
+                label2.Dock = DockStyle.Right;
+                label3.Dock = DockStyle.Right;
             }
         }
 
@@ -59,6 +59,11 @@ namespace Chat
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public Boolean getSender()
+        {
+            return this.sender;
         }
     }
 }
