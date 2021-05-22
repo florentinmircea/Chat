@@ -192,7 +192,7 @@ namespace Chat
             // messagesFlowLayout
             // 
             this.messagesFlowLayout.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.messagesFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.messagesFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.messagesFlowLayout.Location = new System.Drawing.Point(16, 94);
             this.messagesFlowLayout.Name = "messagesFlowLayout";
             this.messagesFlowLayout.Size = new System.Drawing.Size(454, 341);

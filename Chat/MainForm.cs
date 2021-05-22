@@ -36,7 +36,7 @@ namespace Chat
             else
                 MessageBox.Show("Connection error");
 
-            message("cds", "ewcs");
+            messageModel("cds", "ewcs");
         }
 
         public static IFirebaseConfig config = new FirebaseConfig
@@ -183,14 +183,25 @@ namespace Chat
             RefreshColorScheme(colorMode);
         }
 
-        public async void message(string currentUser, string otherUser)
+        public async void messageModel(string currentUser, string otherUser)
         {
             //MessageBox.Show("Current user index : " + currentUser + ", Receiver User Index = " + otherUser);
             //alphabetical order
             currentUser = "florentinmircea";
             otherUser =  "robertbudai";
-
-            var response = await client.GetAsync("messages/"+currentUser+"_"+otherUser);
+            string firstUser;
+            string secondUser;
+            if (String.Compare(currentUser, otherUser)>0)
+            {
+                firstUser = otherUser;
+                secondUser = currentUser;
+            }
+            else
+            {
+                firstUser = currentUser;
+                secondUser = otherUser;
+            }
+            var response = await client.GetAsync("messages/"+firstUser+"_"+secondUser);
             messageDictionary = response.ResultAs<Dictionary<string, Message>>();
             if (messageDictionary != null)
             {
@@ -200,10 +211,12 @@ namespace Chat
                     messageList.Add(item.Value);
                 }
             }
-            //messageList.Sort()
             //order messages
+            messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
             updateView(messageList, currentUser, otherUser);
         }
+
+        //public void messageController()
         public void updateView(List<Message> messageList, string currentUser, string otherUser)
         {
             foreach (var x in messageList)
