@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,9 @@ namespace Chat
         Login pointer;
         private Color[] colorScheme;
         private string colorMode;
+        static Dictionary<string,Message> messageDictionary;
+        static List<Message> messageList = new List<Message>();
+        static List<messageBlob> messageBlobList = new List<messageBlob>();
         public MainForm(Login point)
         {
             pointer = point;
@@ -25,7 +30,21 @@ namespace Chat
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
+            client = new FireSharp.FirebaseClient(config);
+            if (client != null) { }
+            //MessageBox.Show("conn established"); 
+            else
+                MessageBox.Show("Connection error");
+
+            message("cds", "ewcs");
         }
+
+        public static IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "inXj8sTPJUWlgLwQVJZSR2p4NR7EeJ4xZwHobH09",
+            BasePath = "https://poli-chat-db-default-rtdb.firebaseio.com/"
+        };
+        public static IFirebaseClient client;
 
         private void SetColorScheme(Color lightColor, Color mediumColor, Color darkColor)
         {
@@ -43,7 +62,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[1];
                 groupBox_myProfile.BackColor = colorScheme[1];
-                listBox_conv.BackColor = colorScheme[0];
+                //listBox_conv.BackColor = colorScheme[0];
                 richTextBox_conv.BackColor = colorScheme[0];
                 contactListFlowLayoutPanel.BackColor = colorScheme[0];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -59,7 +78,7 @@ namespace Chat
                 button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[2];
                 groupBox_myProfile.BackColor = colorScheme[2];
-                listBox_conv.BackColor = colorScheme[1];
+                //listBox_conv.BackColor = colorScheme[1];
                 richTextBox_conv.BackColor = colorScheme[1];
                 contactListFlowLayoutPanel.BackColor = colorScheme[1];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -70,12 +89,14 @@ namespace Chat
             }
         }
 
+
+
         private void populateList()
         {
             ContactUserControl[] contactList = new ContactUserControl[10];
             for (int i = 0; i < contactList.Length; i++)
             {
-                contactList[i] = new ContactUserControl();
+                contactList[i] = new ContactUserControl(this);
                 contactList[i].UserName = "Contact " + i;
                 contactList[i].LastMessage = "Message blah";
                 contactList[i].ProfilePicture = Resource.defaultProfilePicture;
@@ -161,5 +182,37 @@ namespace Chat
                 colorMode = "DARK";
             RefreshColorScheme(colorMode);
         }
+
+        public async void message(string currentUser, string otherUser)
+        {
+            //MessageBox.Show("Current user index : " + currentUser + ", Receiver User Index = " + otherUser);
+            //alphabetical order
+            currentUser = "florentinmircea";
+            otherUser =  "robertbudai";
+
+            var response = await client.GetAsync("messages/"+currentUser+"_"+otherUser);
+            messageDictionary = response.ResultAs<Dictionary<string, Message>>();
+            if (messageDictionary != null)
+            {
+                var aux = from x in messageDictionary select x;
+                foreach (var item in aux)
+                {
+                    messageList.Add(item.Value);
+                }
+            }
+            //messageList.Sort()
+            //order messages
+            updateView(messageList, currentUser, otherUser);
+        }
+        public void updateView(List<Message> messageList, string currentUser, string otherUser)
+        {
+            foreach (var x in messageList)
+            {
+                messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
+                messageBlobList.Add(msb);
+                messagesFlowLayout.Controls.Add(msb);
+            }
+        }
     }
+
 }
