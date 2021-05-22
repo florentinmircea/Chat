@@ -63,6 +63,8 @@
     <Compile Include="messageBlob.Designer.cs">
       <DependentUpon>messageBlob.cs</DependentUpon>
     </Compile>
+    <Compile Include="messageController.cs" />
+    <Compile Include="messageModel.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>

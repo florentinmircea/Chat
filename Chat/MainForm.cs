@@ -17,8 +17,7 @@ namespace Chat
         Login pointer;
         private Color[] colorScheme;
         private string colorMode;
-        static Dictionary<string,Message> messageDictionary;
-        static List<Message> messageList = new List<Message>();
+        static List<Message> messageListLocal = new List<Message>();
         static List<messageBlob> messageBlobList = new List<messageBlob>();
         public MainForm(Login point)
         {
@@ -36,7 +35,7 @@ namespace Chat
             else
                 MessageBox.Show("Connection error");
 
-            messageModel("cds", "ewcs");
+            messageController mc = new messageController("robertbudai", "florentinmircea", this);
         }
 
         public static IFirebaseConfig config = new FirebaseConfig
@@ -183,43 +182,12 @@ namespace Chat
             RefreshColorScheme(colorMode);
         }
 
-        public async void messageModel(string currentUser, string otherUser)
-        {
-            //MessageBox.Show("Current user index : " + currentUser + ", Receiver User Index = " + otherUser);
-            //alphabetical order
-            currentUser = "florentinmircea";
-            otherUser =  "robertbudai";
-            string firstUser;
-            string secondUser;
-            if (String.Compare(currentUser, otherUser)>0)
-            {
-                firstUser = otherUser;
-                secondUser = currentUser;
-            }
-            else
-            {
-                firstUser = currentUser;
-                secondUser = otherUser;
-            }
-            var response = await client.GetAsync("messages/"+firstUser+"_"+secondUser);
-            messageDictionary = response.ResultAs<Dictionary<string, Message>>();
-            if (messageDictionary != null)
-            {
-                var aux = from x in messageDictionary select x;
-                foreach (var item in aux)
-                {
-                    messageList.Add(item.Value);
-                }
-            }
-            //order messages
-            messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
-            updateView(messageList, currentUser, otherUser);
-        }
-
         //public void messageController()
         public void updateView(List<Message> messageList, string currentUser, string otherUser)
         {
-            foreach (var x in messageList)
+            messageListLocal = messageList;
+            messagesFlowLayout.Controls.Clear();
+            foreach (var x in messageListLocal)
             {
                 messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
                 messageBlobList.Add(msb);

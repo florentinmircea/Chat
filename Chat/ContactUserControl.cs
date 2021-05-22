@@ -63,7 +63,7 @@ namespace Chat
 
         private void ContactUserControl_Click(object sender, EventArgs e)
         {
-            mainForm.messageModel("v","vds");
+            //mainForm.messageModel("v","vds");
         }
     }
 }
