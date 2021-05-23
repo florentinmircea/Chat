@@ -27,29 +27,33 @@ namespace Chat
             BasePath = "https://poli-chat-db-default-rtdb.firebaseio.com/"
         };
         public static IFirebaseClient client;
+
         public Login()
         {
             InitializeComponent();
+            PaintForm();
             client = new FireSharp.FirebaseClient(config);
             if (client != null) { }
             //MessageBox.Show("conn established"); 
             else
-                MessageBox.Show("Connection error"); 
+                MessageBox.Show("Connection error");
         }
+
         public static async void Get_users()
         {
             var response = await client.GetAsync("users");
             userDictionary = response.ResultAs<Dictionary<string, User>>();
-            if(userDictionary!=null)
+            if (userDictionary != null)
             {
                 var aux = from x in userDictionary select x;
-                foreach(var item in aux)
+                foreach (var item in aux)
                 {
                     userList.Add(item.Value);
                 }
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void button_login_Click(object sender, EventArgs e)
         {
             string current_username = textBox1.Text;
             string current_password = textBox2.Text;
@@ -59,17 +63,17 @@ namespace Chat
             }
             else
             {
-                
+
                 for (int i = 0; i < userList.Count; i++)
                 {
-                    if(userList[i].username==current_username && userList[i].password==current_password)
+                    if (userList[i].username == current_username && userList[i].password == current_password)
                     {
                         isAuth = true;
                         currentUserIndex = i;
                         break;
                     }
                 }
-                if(isAuth)
+                if (isAuth)
                 {
                     textBox2.Text = "";
                     this.Hide();
@@ -81,9 +85,6 @@ namespace Chat
                     MessageBox.Show("Wrong Username or password!");
                 }
             }
-            
-            
-            
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -98,9 +99,26 @@ namespace Chat
             registerForm.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button_exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PaintForm()
+        {
+            Color lightColor = Color.FromArgb(221, 228, 225);
+            Color mediumColor = Color.FromArgb(112, 164, 194);
+            Color darkColor = Color.FromArgb(53, 58, 90);
+            BackColor = lightColor;
+            button_login.BackColor = mediumColor;
+            button_login.ForeColor = darkColor;
+            button_exit.BackColor = mediumColor;
+            button_exit.ForeColor = darkColor;
+            foreach (Control c in Controls)
+            {
+                if (c.GetType() == typeof(Label))
+                    c.ForeColor = darkColor;
+            }
         }
     }
 }
