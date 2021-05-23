@@ -16,6 +16,7 @@ namespace Chat
         messageController mc;
         static Dictionary<string, Message> messageDictionary;
         static List<Message> messageList = new List<Message>();
+        static List<Message> messageListNext = new List<Message>();
         static List<messageBlob> messageBlobList = new List<messageBlob>();
 
         public static IFirebaseConfig config = new FirebaseConfig
@@ -37,10 +38,12 @@ namespace Chat
                 MessageBox.Show("Connection error");
         }
 
-        public async void messageUpdateMessage(string currentUser, string otherUser)
+        public async void messageUpdateMessage(string currentUser, string otherUser, Boolean newOtherUser)
         {
+            //MessageBox.Show(currentUser + ", " + otherUser);
             string firstUser;
             string secondUser;
+            messageList.Clear();
             if (String.Compare(currentUser, otherUser) > 0)
             {
                 firstUser = otherUser;
@@ -64,7 +67,13 @@ namespace Chat
 
             //order messages
             messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
-            mc.updateView(messageList, currentUser, otherUser);
+
+            if (messageList.Count > messageListNext.Count || newOtherUser)
+            {
+                mc.updateView(messageList, currentUser, otherUser);
+                messageListNext = messageList;
+            }
+
         }
 
     }

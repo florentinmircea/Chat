@@ -79,14 +79,19 @@ namespace Chat
 
         private void populateList()
         {
-            ContactUserControl[] contactList = new ContactUserControl[10];
+            ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
+
+
             for (int i = 0; i < contactList.Length; i++)
             {
-                contactList[i] = new ContactUserControl(this);
-                contactList[i].UserName = "Contact " + i;
-                contactList[i].LastMessage = "Message blah";
-                contactList[i].ProfilePicture = Resource.defaultProfilePicture;
-                contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                if (i != Login.currentUserIndex)
+                {
+                    contactList[i] = new ContactUserControl(this);
+                    contactList[i].UserName = Login.userList[i].username;
+                    contactList[i].LastMessage = "Message blah";
+                    contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
+                    contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                }
             }
         }
         private void checkList()
@@ -100,6 +105,7 @@ namespace Chat
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
             pointer.Show();
             Login.isAuth = false;
         }
@@ -174,7 +180,7 @@ namespace Chat
         public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
         {
             messageListLocal = messageList;
-            messagesFlowLayout.Controls.Clear();
+            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
             foreach (var x in messageListLocal)
             {
                 messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
