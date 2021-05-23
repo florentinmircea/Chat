@@ -22,7 +22,7 @@ namespace Chat
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
-        private String _userName;
+        public static String _userName;
 
         public String UserName
         {
