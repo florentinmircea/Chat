@@ -38,7 +38,7 @@ namespace Chat
                 MessageBox.Show("Connection error");
         }
 
-        public async void messageUpdateMessage(string currentUser, string otherUser)
+        public async void messageUpdateMessage(string currentUser, string otherUser, Boolean newOtherUser)
         {
             //MessageBox.Show(currentUser + ", " + otherUser);
             string firstUser;
@@ -68,7 +68,7 @@ namespace Chat
             //order messages
             messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
 
-            if (messageList.Count != messageListNext.Count)
+            if (messageList.Count > messageListNext.Count || newOtherUser)
             {
                 mc.updateView(messageList, currentUser, otherUser);
                 messageListNext = messageList;

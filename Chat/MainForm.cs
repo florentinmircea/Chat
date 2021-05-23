@@ -105,6 +105,7 @@ namespace Chat
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
             pointer.Show();
             Login.isAuth = false;
         }

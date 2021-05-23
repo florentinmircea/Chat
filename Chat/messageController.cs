@@ -12,13 +12,15 @@ namespace Chat
     {
         private string currentUser;
         private string otherUser;
-        private int milliseconds = 500;
+        private int milliseconds = 300;
+        Boolean newOtherUser = false;
         messageModel mm;
         MainForm mf;
         public messageController(string currentUser, string otherUser, MainForm mf)
         {
             this.currentUser = currentUser;
             this.otherUser = otherUser;
+
             this.mf = mf;
             this.mm = new messageModel(currentUser, otherUser, this);
             Thread thr = new Thread(new ThreadStart(this.permanentThread));
@@ -33,6 +35,7 @@ namespace Chat
         public void updateOtherUser(string otherUser)
         {
             this.otherUser = otherUser;
+            newOtherUser = true;
         }
 
         public void permanentThread()
@@ -41,7 +44,8 @@ namespace Chat
             {
                 if (otherUser != "")
                 {
-                    mm.messageUpdateMessage(currentUser, otherUser);
+                    mm.messageUpdateMessage(currentUser, otherUser, newOtherUser);
+                    newOtherUser = false;
                 }
                 Thread.Sleep(milliseconds);
             }
