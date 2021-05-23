@@ -79,14 +79,19 @@ namespace Chat
 
         private void populateList()
         {
-            ContactUserControl[] contactList = new ContactUserControl[10];
+            ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
+
+
             for (int i = 0; i < contactList.Length; i++)
             {
-                contactList[i] = new ContactUserControl(this);
-                contactList[i].UserName = "Contact " + i;
-                contactList[i].LastMessage = "Message blah";
-                contactList[i].ProfilePicture = Resource.defaultProfilePicture;
-                contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                if (i != Login.currentUserIndex)
+                {
+                    contactList[i] = new ContactUserControl(this);
+                    contactList[i].UserName = Login.userList[i].username;
+                    contactList[i].LastMessage = "Message blah";
+                    contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
+                    contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                }
             }
         }
         private void checkList()

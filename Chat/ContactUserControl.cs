@@ -19,7 +19,7 @@ namespace Chat
         {
             InitializeComponent();
             this.mainForm = mainForm;
-
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private String _userName;
@@ -63,7 +63,14 @@ namespace Chat
 
         private void ContactUserControl_Click(object sender, EventArgs e)
         {
-            //mainForm.messageModel("v","vds");
+            mainForm.mc.updateOtherUser(_userName);
+            MessageBox.Show(_userName);
+        }
+
+        private void ContactUserControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            mainForm.mc.updateOtherUser(_userName);
+            MessageBox.Show(_userName);
         }
     }
 }
