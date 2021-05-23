@@ -69,10 +69,10 @@ namespace Chat
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 30);
+            this.splitter1.Location = new System.Drawing.Point(0, 28);
             this.splitter1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(468, 580);
+            this.splitter1.Size = new System.Drawing.Size(468, 582);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -170,6 +170,7 @@ namespace Chat
             this.richTextBox_conv.Size = new System.Drawing.Size(441, 57);
             this.richTextBox_conv.TabIndex = 11;
             this.richTextBox_conv.Text = "";
+            this.richTextBox_conv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox_conv_KeyDown);
             // 
             // groupBox_conv
             // 
@@ -252,7 +253,7 @@ namespace Chat
             this.colorSchemesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(959, 30);
+            this.menuStrip.Size = new System.Drawing.Size(959, 28);
             this.menuStrip.TabIndex = 14;
             this.menuStrip.Text = "menuStrip1";
             // 

@@ -189,6 +189,14 @@ namespace Chat
                 messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
             }
         }
+
+        private void richTextBox_conv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                MessageBox.Show("hi");
+            }
+        }
     }
 
 }
