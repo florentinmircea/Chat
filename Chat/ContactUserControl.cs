@@ -64,13 +64,13 @@ namespace Chat
         private void ContactUserControl_Click(object sender, EventArgs e)
         {
             mainForm.mc.updateOtherUser(_userName);
-            MessageBox.Show(_userName);
+            //MessageBox.Show(_userName);
         }
 
         private void ContactUserControl_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_userName);
-            MessageBox.Show(_userName);
+            //MessageBox.Show(_userName);
         }
     }
 }

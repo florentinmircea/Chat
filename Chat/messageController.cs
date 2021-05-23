@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Chat
 {
@@ -11,7 +12,7 @@ namespace Chat
     {
         private string currentUser;
         private string otherUser;
-        private int milliseconds = 2500;
+        private int milliseconds = 500;
         messageModel mm;
         MainForm mf;
         public messageController(string currentUser, string otherUser, MainForm mf)
@@ -36,11 +37,15 @@ namespace Chat
 
         public void permanentThread()
         {
-            if (otherUser != "")
+            while (true)
             {
-                mm.messageUpdateMessage(currentUser, otherUser);
+                if (otherUser != "")
+                {
+                    mm.messageUpdateMessage(currentUser, otherUser);
+                }
+                Thread.Sleep(milliseconds);
             }
-            Thread.Sleep(milliseconds);
+
         }
 
     }

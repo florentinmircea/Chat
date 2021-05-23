@@ -179,7 +179,7 @@ namespace Chat
         public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
         {
             messageListLocal = messageList;
-            messagesFlowLayout.Controls.Clear();
+            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
             foreach (var x in messageListLocal)
             {
                 messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
