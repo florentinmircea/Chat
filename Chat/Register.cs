@@ -16,6 +16,8 @@ namespace Chat
     public partial class Register : Form
     {
         Login pointer;
+        static Dictionary<string, Faculty> facultiesDictionary;
+        static List<Faculty> facultiesList = new List<Faculty>();
         public Register(Login point)
         {
             pointer = point;
@@ -26,14 +28,14 @@ namespace Chat
         private async void button_register_Click(object sender, EventArgs e)
         {
             bool isMailValid = false;
-            string Email = email_Textbox.Text, Fullname = fullname_Textbox.Text, Username = username_Textbox.Text, Password = password_Textbox.Text, Confirmpassword = confirmPass_Textbox.Text, Picturelink = picture_Textbox.Text, City = city_Textbox.Text, Age = age_Textbox.Text;
+            string Email = email_Textbox.Text, Fullname = fullname_Textbox.Text, Username = username_Textbox.Text, Password = password_Textbox.Text, Confirmpassword = confirmPass_Textbox.Text, Picturelink = picture_Textbox.Text, City = city_Textbox.Text, Age = age_Textbox.Text,Faculty=comboBox1.SelectedItem.ToString();
             if (Email.Length > 6)
             {
                 var addr = new System.Net.Mail.MailAddress(Email);
                 isMailValid = addr.Address == Email ? true : false;
             }
 
-            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Convert.ToInt32(Age) > 17 && City.Length > 4)
+            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Convert.ToInt32(Age) > 17 && City.Length > 4 && comboBox1.SelectedIndex>-1)
             {
                 if (Password == Confirmpassword && Password.Length >= 6)
                 {
@@ -45,7 +47,8 @@ namespace Chat
                         password = Password,
                         picture = Picturelink,
                         age = Age,
-                        city = City
+                        city = City,
+                        faculty=Faculty
                     };
                     PushResponse response = await Login.client.PushAsync("users", user);
                     MessageBox.Show("User created!");
@@ -86,6 +89,53 @@ namespace Chat
                 if (c.GetType() == typeof(Label))
                     c.ForeColor = darkColor;
             }
+        }
+
+        public static void Get_faculties()
+        {
+            var response = Login.client.Get("faculties");
+            facultiesDictionary = response.ResultAs<Dictionary<string, Faculty>>();
+            if (facultiesDictionary != null)
+            {
+                var aux = from x in facultiesDictionary select x;
+                foreach (var item in aux)
+                {
+                    facultiesList.Add(item.Value);
+                }
+            }
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = fullname_Textbox;
+            Get_faculties();
+            foreach (var item in facultiesList)
+            {
+                comboBox1.Items.Add(item.name);
+            }
+        }
+
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            ComboBox senderComboBox = (ComboBox)sender;
+            int width = senderComboBox.DropDownWidth;
+            Graphics g = senderComboBox.CreateGraphics();
+            Font font = senderComboBox.Font;
+            int vertScrollBarWidth =
+                (senderComboBox.Items.Count > senderComboBox.MaxDropDownItems)
+                ? SystemInformation.VerticalScrollBarWidth : 0;
+
+            int newWidth;
+            foreach (string s in ((ComboBox)sender).Items)
+            {
+                newWidth = (int)g.MeasureString(s, font).Width
+                    + vertScrollBarWidth;
+                if (width < newWidth)
+                {
+                    width = newWidth;
+                }
+            }
+            senderComboBox.DropDownWidth = width;
         }
     }
 }
