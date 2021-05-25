@@ -189,6 +189,12 @@ namespace Chat
                 messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
             }
         }
+
+        private void editAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountEdit accountEdit = new AccountEdit();
+            accountEdit.ShowDialog();
+        }
     }
 
 }
