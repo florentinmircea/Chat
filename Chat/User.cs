@@ -21,5 +21,7 @@ namespace Chat
 
         public string city { get; set; }
 
+        public string faculty { get; set; }
+
     }
 }
