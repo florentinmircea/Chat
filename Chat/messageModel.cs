@@ -1,9 +1,11 @@
 ﻿using FireSharp.Config;
 using FireSharp.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -43,37 +45,47 @@ namespace Chat
             //MessageBox.Show(currentUser + ", " + otherUser);
             string firstUser;
             string secondUser;
-            messageList.Clear();
-            if (String.Compare(currentUser, otherUser) > 0)
-            {
-                firstUser = otherUser;
-                secondUser = currentUser;
-            }
-            else
-            {
-                firstUser = currentUser;
-                secondUser = otherUser;
-            }
-            var response = await client.GetAsync("messages/" + firstUser + "_" + secondUser);
-            messageDictionary = response.ResultAs<Dictionary<string, Message>>();
-            if (messageDictionary != null)
-            {
-                var aux = from x in messageDictionary select x;
-                foreach (var item in aux)
+
+
+                messageList.Clear();
+                if (String.Compare(currentUser, otherUser) > 0)
                 {
-                    messageList.Add(item.Value);
+                    firstUser = otherUser;
+                    secondUser = currentUser;
                 }
-            }
+                else
+                {
+                    firstUser = currentUser;
+                    secondUser = otherUser;
+                }
+                var response = await client.GetAsync("messages/" + firstUser + "_" + secondUser);
+                messageDictionary = response.ResultAs<Dictionary<string, Message>>();
+                if (messageDictionary != null)
+                {
+                try
+                {
+                    lock (((ICollection)messageList).SyncRoot)
+                    {
+                        var aux = from x in messageDictionary select x;
+                        foreach (var item in aux)
+                        {
+                            messageList.Add(item.Value);
+                        }
+                        //order messages
+                        messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
 
-            //order messages
-            messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
+                        if (messageList.Count > messageListNext.Count || newOtherUser)
+                        {
+                            mc.updateView(messageList, currentUser, otherUser);
+                            messageListNext = messageList;
+                        }
+                    }
+                }
+                catch { };
+                }
 
-            if (messageList.Count > messageListNext.Count || newOtherUser)
-            {
-                mc.updateView(messageList, currentUser, otherUser);
-                messageListNext = messageList;
-            }
 
+            
         }
 
     }

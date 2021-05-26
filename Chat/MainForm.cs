@@ -1,12 +1,14 @@
 ﻿using FireSharp.Config;
 using FireSharp.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -179,15 +181,22 @@ namespace Chat
         //public void messageController()
         public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
         {
-            messageListLocal = messageList;
-            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
-            foreach (var x in messageListLocal)
+            try
             {
-                messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
-                //messageBlobList.Add(msb);
-                //messagesFlowLayout.Controls.Add(msb);
-                messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
+                lock (((ICollection)messageList).SyncRoot)
+                {
+                    messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
+                    foreach (var x in messageList)
+                    {
+                        messageBlob msb = new messageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());
+                        //messageBlobList.Add(msb);
+                        //messagesFlowLayout.Controls.Add(msb);
+                        messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
+                    }
+                }
             }
+            catch { };
+
         }
 
         private void editAccountToolStripMenuItem_Click(object sender, EventArgs e)
