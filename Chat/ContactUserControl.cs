@@ -15,6 +15,15 @@ namespace Chat
         //private string 
         MainForm mainForm;
 
+        private User _user;
+
+        public User UserEntity
+        {
+            get { return _user; }
+            set { _user = value; }
+        }
+
+
         public ContactUserControl(MainForm mainForm)
         {
             InitializeComponent();
@@ -63,13 +72,13 @@ namespace Chat
 
         private void ContactUserControl_Click(object sender, EventArgs e)
         {
-            mainForm.mc.updateOtherUser(_userName);
+            mainForm.mc.updateOtherUser(_user);
             //MessageBox.Show(_userName);
         }
 
         private void ContactUserControl_MouseClick(object sender, MouseEventArgs e)
         {
-            mainForm.mc.updateOtherUser(_userName);
+            mainForm.mc.updateOtherUser(_user);
             //MessageBox.Show(_userName);
         }
     }

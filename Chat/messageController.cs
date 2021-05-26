@@ -10,6 +10,7 @@ namespace Chat
 {
     public class messageController
     {
+        private User otherUserEntity;
         private string currentUser;
         private string otherUser;
         private int milliseconds = 300;
@@ -29,12 +30,13 @@ namespace Chat
 
         public void updateView(List<Message> messageList, string currentUser, string otherUser)
         {
-            mf.updateMessageView(messageList, currentUser, otherUser);
+            mf.updateMessageView(messageList, currentUser, otherUser, this.otherUserEntity);
         }
 
-        public void updateOtherUser(string otherUser)
+        public void updateOtherUser(User otherUser)
         {
-            this.otherUser = otherUser;
+            this.otherUserEntity = otherUser;
+            this.otherUser = otherUser.username;
             newOtherUser = true;
         }
 

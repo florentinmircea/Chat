@@ -90,6 +90,7 @@ namespace Chat
                     contactList[i].UserName = Login.userList[i].username;
                     contactList[i].LastMessage = "Message blah";
                     contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
+                    contactList[i].UserEntity = Login.userList[i];
                     contactListFlowLayoutPanel.Controls.Add(contactList[i]);
                 }
             }
@@ -177,7 +178,7 @@ namespace Chat
         }
 
         //public void messageController()
-        public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
+        public void updateMessageView(List<Message> messageList, string currentUser, string otherUser, User otherUserEntity)
         {
             messageListLocal = messageList;
             messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
@@ -188,7 +189,14 @@ namespace Chat
                 //messagesFlowLayout.Controls.Add(msb);
                 messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
             }
+            label_ageContact.Invoke((MethodInvoker)(() => label_ageContact.Text = otherUserEntity.age));
+            label_cityContact.Invoke((MethodInvoker)(() => label_cityContact.Text = otherUserEntity.city));
+            pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.ImageLocation = otherUserEntity.picture));
+            groupBox_conv.Invoke((MethodInvoker)(() => groupBox_conv.Text = otherUserEntity.username));
+            
         }
+
+     
     }
 
 }

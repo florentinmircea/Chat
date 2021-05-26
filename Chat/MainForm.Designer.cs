@@ -69,10 +69,10 @@ namespace Chat
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 30);
+            this.splitter1.Location = new System.Drawing.Point(0, 28);
             this.splitter1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(468, 580);
+            this.splitter1.Size = new System.Drawing.Size(468, 582);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -220,10 +220,11 @@ namespace Chat
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(16, 27);
+            this.pictureBox2.Location = new System.Drawing.Point(16, 31);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 52);
+            this.pictureBox2.Size = new System.Drawing.Size(62, 62);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
@@ -252,7 +253,7 @@ namespace Chat
             this.colorSchemesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(959, 30);
+            this.menuStrip.Size = new System.Drawing.Size(959, 28);
             this.menuStrip.TabIndex = 14;
             this.menuStrip.Text = "menuStrip1";
             // 
