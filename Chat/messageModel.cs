@@ -1,6 +1,7 @@
 ﻿using FireSharp.Config;
 using FireSharp.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,7 @@ namespace Chat
             //MessageBox.Show(currentUser + ", " + otherUser);
             string firstUser;
             string secondUser;
-            messageList.Clear();
+
             if (String.Compare(currentUser, otherUser) > 0)
             {
                 firstUser = otherUser;
@@ -58,23 +59,41 @@ namespace Chat
             messageDictionary = response.ResultAs<Dictionary<string, Message>>();
             if (messageDictionary != null)
             {
-                var aux = from x in messageDictionary select x;
-                foreach (var item in aux)
+                try
                 {
-                    messageList.Add(item.Value);
+                    lock (((ICollection)messageList).SyncRoot)
+                    {
+                        messageList.Clear();
+                        var aux = from x in messageDictionary select x;
+
+                        foreach (var item in aux)
+                        {
+                            item.Value.dts = DateTime.ParseExact(item.Value.timestamp, "dd.M.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                            messageList.Add(item.Value);
+
+                        }
+                        //order messages
+                        messageList = messageList.OrderBy(o =>  o.dts).ToList();
+                        if (messageList.Count > messageListNext.Count || newOtherUser)
+                        {
+                            mc.updateView(messageList, currentUser, otherUser);
+                            messageListNext = messageList;
+                        }
+                    }
                 }
+                catch { };
+   
             }
-
-            //order messages
-            messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
-
-            if (messageList.Count > messageListNext.Count || newOtherUser)
+            else if (messageDictionary == null && newOtherUser)
             {
+                messageList.Clear();
                 mc.updateView(messageList, currentUser, otherUser);
-                messageListNext = messageList;
             }
+
+
 
         }
+
 
     }
 }
