@@ -12,7 +12,7 @@ namespace Chat
     {
         private string currentUser;
         private string otherUser;
-        private int milliseconds = 300;
+        private int milliseconds = 700;
         Boolean newOtherUser = false;
         messageModel mm;
         MainForm mf;

@@ -186,6 +186,7 @@ namespace Chat
                 lock (((ICollection)messageList).SyncRoot)
                 {
                     messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
+                    MessageBox.Show(Convert.ToString(messageList.Count));
                     foreach (var x in messageList)
                     {
                         messageBlob msb = new messageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());

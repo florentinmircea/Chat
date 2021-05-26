@@ -72,8 +72,7 @@ namespace Chat
                             messageList.Add(item.Value);
                         }
                         //order messages
-                        messageList = messageList.OrderByDescending(o => o.timestamp).ToList();
-
+                        messageList = messageList.OrderBy(o => o.timestamp).ToList();
                         if (messageList.Count > messageListNext.Count || newOtherUser)
                         {
                             mc.updateView(messageList, currentUser, otherUser);
