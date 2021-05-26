@@ -1,5 +1,6 @@
 ﻿using FireSharp.Config;
 using FireSharp.Interfaces;
+using FireSharp.Response;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -196,7 +197,45 @@ namespace Chat
            
         }
 
-     
+        private void richTextBox_conv_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void richTextBox_conv_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (richTextBox_conv.Text.Length > 0)
+                {
+                    e.Handled = true;
+                    DateTime now = DateTime.Now;
+                    String message = richTextBox_conv.Text;
+                    richTextBox_conv.Text = "";
+                    richTextBox_conv.SelectionStart = 0;
+                    var messag = new Message
+                    {
+                        timestamp = Convert.ToString(now),
+                        messageType = "TEXT",
+                        message = message,
+                        mediaUrl = "",
+                        sender = Login.userList[Login.currentUserIndex].username
+                    };
+
+                    string aux;
+                    string firstUser = messag.sender;
+                    string secondUser = otherUser.username;
+                    if (String.Compare(firstUser, secondUser) > 0)
+                    {
+                        aux = firstUser;
+                        firstUser = secondUser;
+                        secondUser = aux;
+                    }
+                    //MessageBox.Show(firstUser + " " + secondUser);
+                    PushResponse response = await Login.client.PushAsync("messages/" + firstUser + "_" + secondUser, messag);
+                }
+            }
+        }
     }
 
 }
