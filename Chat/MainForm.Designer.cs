@@ -70,9 +70,9 @@ namespace Chat
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 24);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(351, 472);
+            this.splitter1.Size = new System.Drawing.Size(351, 491);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -96,9 +96,9 @@ namespace Chat
             this.groupBox_myProfile.Controls.Add(this.label_username);
             this.groupBox_myProfile.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.groupBox_myProfile.Location = new System.Drawing.Point(9, 33);
-            this.groupBox_myProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_myProfile.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_myProfile.Name = "groupBox_myProfile";
-            this.groupBox_myProfile.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_myProfile.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox_myProfile.Size = new System.Drawing.Size(334, 144);
             this.groupBox_myProfile.TabIndex = 5;
             this.groupBox_myProfile.TabStop = false;
@@ -140,7 +140,7 @@ namespace Chat
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(11, 63);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 65);
             this.pictureBox1.TabIndex = 3;
@@ -150,7 +150,7 @@ namespace Chat
             // 
             this.textBox_searchContact.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBox_searchContact.Location = new System.Drawing.Point(91, 187);
-            this.textBox_searchContact.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_searchContact.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_searchContact.Name = "textBox_searchContact";
             this.textBox_searchContact.Size = new System.Drawing.Size(254, 29);
             this.textBox_searchContact.TabIndex = 7;
@@ -158,7 +158,7 @@ namespace Chat
             // button_searchContact
             // 
             this.button_searchContact.Location = new System.Drawing.Point(20, 187);
-            this.button_searchContact.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_searchContact.Margin = new System.Windows.Forms.Padding(2);
             this.button_searchContact.Name = "button_searchContact";
             this.button_searchContact.Size = new System.Drawing.Size(58, 26);
             this.button_searchContact.TabIndex = 8;
@@ -168,10 +168,10 @@ namespace Chat
             // 
             // richTextBox_conv
             // 
-            this.richTextBox_conv.Location = new System.Drawing.Point(12, 366);
-            this.richTextBox_conv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox_conv.Location = new System.Drawing.Point(12, 393);
+            this.richTextBox_conv.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox_conv.Name = "richTextBox_conv";
-            this.richTextBox_conv.Size = new System.Drawing.Size(332, 47);
+            this.richTextBox_conv.Size = new System.Drawing.Size(381, 56);
             this.richTextBox_conv.TabIndex = 11;
             this.richTextBox_conv.Text = "";
             this.richTextBox_conv.TextChanged += new System.EventHandler(this.richTextBox_conv_TextChanged);
@@ -186,10 +186,10 @@ namespace Chat
             this.groupBox_conv.Controls.Add(this.richTextBox_conv);
             this.groupBox_conv.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.groupBox_conv.Location = new System.Drawing.Point(356, 55);
-            this.groupBox_conv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_conv.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_conv.Name = "groupBox_conv";
-            this.groupBox_conv.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox_conv.Size = new System.Drawing.Size(355, 434);
+            this.groupBox_conv.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox_conv.Size = new System.Drawing.Size(397, 460);
             this.groupBox_conv.TabIndex = 8;
             this.groupBox_conv.TabStop = false;
             this.groupBox_conv.Text = "usenameContact";
@@ -198,11 +198,10 @@ namespace Chat
             // messagesFlowLayout
             // 
             this.messagesFlowLayout.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.messagesFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.messagesFlowLayout.Location = new System.Drawing.Point(12, 76);
-            this.messagesFlowLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.messagesFlowLayout.Location = new System.Drawing.Point(12, 79);
+            this.messagesFlowLayout.Margin = new System.Windows.Forms.Padding(2);
             this.messagesFlowLayout.Name = "messagesFlowLayout";
-            this.messagesFlowLayout.Size = new System.Drawing.Size(340, 277);
+            this.messagesFlowLayout.Size = new System.Drawing.Size(381, 302);
             this.messagesFlowLayout.TabIndex = 13;
             // 
             // label_cityContact
@@ -230,7 +229,7 @@ namespace Chat
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(12, 25);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(46, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -242,7 +241,7 @@ namespace Chat
             this.contactListFlowLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.contactListFlowLayoutPanel.ImeMode = System.Windows.Forms.ImeMode.On;
             this.contactListFlowLayoutPanel.Location = new System.Drawing.Point(9, 229);
-            this.contactListFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contactListFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.contactListFlowLayoutPanel.Name = "contactListFlowLayoutPanel";
             this.contactListFlowLayoutPanel.Size = new System.Drawing.Size(334, 260);
             this.contactListFlowLayoutPanel.TabIndex = 13;
@@ -250,7 +249,7 @@ namespace Chat
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(0, 132);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(351, 201);
             this.panel1.TabIndex = 0;
@@ -263,7 +262,7 @@ namespace Chat
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(719, 24);
+            this.menuStrip.Size = new System.Drawing.Size(784, 24);
             this.menuStrip.TabIndex = 14;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -341,7 +340,7 @@ namespace Chat
             // 
             this.trackBar_darkMode.LargeChange = 1;
             this.trackBar_darkMode.Location = new System.Drawing.Point(578, 33);
-            this.trackBar_darkMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar_darkMode.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar_darkMode.Maximum = 1;
             this.trackBar_darkMode.Name = "trackBar_darkMode";
             this.trackBar_darkMode.Size = new System.Drawing.Size(38, 45);
@@ -369,7 +368,7 @@ namespace Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 496);
+            this.ClientSize = new System.Drawing.Size(784, 515);
             this.Controls.Add(this.label_darkMode);
             this.Controls.Add(this.contactListFlowLayoutPanel);
             this.Controls.Add(this.groupBox_conv);
@@ -381,7 +380,7 @@ namespace Chat
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.trackBar_darkMode);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

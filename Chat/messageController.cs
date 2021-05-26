@@ -30,7 +30,7 @@ namespace Chat
 
         public void updateView(List<Message> messageList, string currentUser, string otherUser)
         {
-            mf.updateMessageView(messageList, currentUser, otherUser, this.otherUserEntity);
+            mf.updateMessageView(messageList, currentUser, otherUser);
         }
 
         public void updateOtherUser(User otherUser)

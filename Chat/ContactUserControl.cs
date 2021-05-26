@@ -73,33 +73,33 @@ namespace Chat
         private void ContactUserControl_Click(object sender, EventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
-            MainForm.otherUser = _user;
+            mainForm.updateOtherUserData(_user);
             //MessageBox.Show(_userName);
         }
 
         private void ContactUserControl_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
-            MainForm.otherUser = _user;
+            mainForm.updateOtherUserData(_user);
             //MessageBox.Show(_userName);
         }
 
         private void contactUsernameLabel_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
-            MainForm.otherUser = _user;
+            mainForm.updateOtherUserData(_user);
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
-            MainForm.otherUser = _user;
+            mainForm.updateOtherUserData(_user);
         }
 
         private void contactLastMessageLabel_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
-            MainForm.otherUser = _user;
+            mainForm.updateOtherUserData(_user);
         }
     }
 }

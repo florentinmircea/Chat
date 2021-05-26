@@ -2,6 +2,7 @@
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,7 @@ namespace Chat
             populateList();
             checkList();
             contactListFlowLayoutPanel.AutoScroll = true;
+            messagesFlowLayout.AutoScroll = true;
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
@@ -178,23 +180,33 @@ namespace Chat
             RefreshColorScheme(colorMode);
         }
 
-        //public void messageController()
-        public void updateMessageView(List<Message> messageList, string currentUser, string otherUser, User otherUserEntity)
+        public void updateOtherUserData(User otherUserEntity)
         {
-            messageListLocal = messageList;
-            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
-            foreach (var x in messageListLocal)
-            {
-                messageBlob msb = new messageBlob(x.message, x.timestamp,x.sender==currentUser, Char.ToString(x.sender[0]).ToUpper());
-                //messageBlobList.Add(msb);
-                //messagesFlowLayout.Controls.Add(msb);
-                messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
-            }
             label_ageContact.Invoke((MethodInvoker)(() => label_ageContact.Text = otherUserEntity.age));
             label_cityContact.Invoke((MethodInvoker)(() => label_cityContact.Text = otherUserEntity.city));
             pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.ImageLocation = otherUserEntity.picture));
             groupBox_conv.Invoke((MethodInvoker)(() => groupBox_conv.Text = otherUserEntity.username));
-           
+        }
+
+        //public void messageController()
+        public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
+        {
+            try
+            {
+                lock (((ICollection)messageList).SyncRoot)
+                {
+                    messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
+                    //MessageBox.Show(Convert.ToString(messageList.Count));
+                    foreach (var x in messageList)
+                    {
+                        messageBlob msb = new messageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());
+                        //messageBlobList.Add(msb);
+                        //messagesFlowLayout.Controls.Add(msb);
+                        messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
+                    }
+                }
+            }
+            catch { };
         }
 
         private void richTextBox_conv_TextChanged(object sender, EventArgs e)
