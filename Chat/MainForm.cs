@@ -14,6 +14,7 @@ namespace Chat
 {
     public partial class MainForm : Form
     {
+        public static User otherUser;
         Login pointer;
         private Color[] colorScheme;
         private string colorMode;
