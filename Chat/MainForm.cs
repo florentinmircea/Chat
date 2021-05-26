@@ -80,10 +80,10 @@ namespace Chat
         private void populateList()
         {
             ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
-
+            string university = Login.userList[Login.currentUserIndex].faculty;
             for (int i = 0; i < contactList.Length; i++)
             {
-                if (i != Login.currentUserIndex)
+                if (i != Login.currentUserIndex && Login.userList[i].faculty == university)
                 {
                     contactList[i] = new ContactUserControl(this);
                     contactList[i].UserName = Login.userList[i].username;
