@@ -81,7 +81,6 @@ namespace Chat
         {
             ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
 
-
             for (int i = 0; i < contactList.Length; i++)
             {
                 if (i != Login.currentUserIndex)
@@ -193,7 +192,7 @@ namespace Chat
             label_cityContact.Invoke((MethodInvoker)(() => label_cityContact.Text = otherUserEntity.city));
             pictureBox2.Invoke((MethodInvoker)(() => pictureBox2.ImageLocation = otherUserEntity.picture));
             groupBox_conv.Invoke((MethodInvoker)(() => groupBox_conv.Text = otherUserEntity.username));
-            
+           
         }
 
      

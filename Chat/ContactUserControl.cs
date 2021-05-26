@@ -81,5 +81,21 @@ namespace Chat
             mainForm.mc.updateOtherUser(_user);
             //MessageBox.Show(_userName);
         }
+
+        private void contactUsernameLabel_MouseClick(object sender, MouseEventArgs e)
+        {
+            mainForm.mc.updateOtherUser(_user);
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            mainForm.mc.updateOtherUser(_user);
+
+        }
+
+        private void contactLastMessageLabel_MouseClick(object sender, MouseEventArgs e)
+        {
+            mainForm.mc.updateOtherUser(_user);
+        }
     }
 }
