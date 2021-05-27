@@ -227,6 +227,7 @@ namespace Chat
                     richTextBox_conv.SelectionStart = 0;
                     var messag = new Message
                     {
+                        dts = (DateTime?)null,
                         timestamp = Convert.ToString(now),
                         messageType = "TEXT",
                         message = message,
@@ -247,6 +248,11 @@ namespace Chat
                     PushResponse response = await Login.client.PushAsync("messages/" + firstUser + "_" + secondUser, messag);
                 }
             }
+        }
+
+        private void messagesFlowLayout_ControlAdded(object sender, ControlEventArgs e)
+        {
+            messagesFlowLayout.ScrollControlIntoView(e.Control);
         }
     }
 

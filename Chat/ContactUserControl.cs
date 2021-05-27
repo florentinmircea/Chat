@@ -74,6 +74,7 @@ namespace Chat
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
+            MainForm.otherUser = _user;
             //MessageBox.Show(_userName);
         }
 
@@ -81,6 +82,7 @@ namespace Chat
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
+            MainForm.otherUser = _user;
             //MessageBox.Show(_userName);
         }
 
@@ -88,18 +90,21 @@ namespace Chat
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
+            MainForm.otherUser = _user;
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
+            MainForm.otherUser = _user;
         }
 
         private void contactLastMessageLabel_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
+            MainForm.otherUser = _user;
         }
     }
 }
