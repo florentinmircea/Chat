@@ -74,6 +74,7 @@ namespace Chat
                         }
                         //order messages
                         messageList = messageList.OrderBy(o =>  o.dts).ToList();
+                        //MessageBox.Show(Convert.ToString(messageList.Count));
                         if (messageList.Count > messageListNext.Count || newOtherUser)
                         {
                             mc.updateView(messageList, currentUser, otherUser);
@@ -86,8 +87,12 @@ namespace Chat
             }
             else if (messageDictionary == null && newOtherUser)
             {
-                messageList.Clear();
-                mc.updateView(messageList, currentUser, otherUser);
+                lock (((ICollection)messageList).SyncRoot)
+                {
+                    messageList.Clear();
+                    messageListNext.Clear();
+                    mc.updateView(messageList, currentUser, otherUser);
+                }
             }
 
 
