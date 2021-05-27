@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -222,13 +223,16 @@ namespace Chat
                 {
                     e.Handled = true;
                     DateTime now = DateTime.Now;
+                    string format = "G";
+                    CultureInfo cultureInfo = CultureInfo.CreateSpecificCulture("ro-RO");
+                    string time = now.ToString(format, cultureInfo);
                     String message = richTextBox_conv.Text;
                     richTextBox_conv.Text = "";
                     richTextBox_conv.SelectionStart = 0;
                     var messag = new Message
                     {
                         dts = (DateTime?)null,
-                        timestamp = Convert.ToString(now),
+                        timestamp = time,
                         messageType = "TEXT",
                         message = message,
                         mediaUrl = "",
@@ -244,7 +248,6 @@ namespace Chat
                         firstUser = secondUser;
                         secondUser = aux;
                     }
-                    //MessageBox.Show(firstUser + " " + secondUser);
                     PushResponse response = await Login.client.PushAsync("messages/" + firstUser + "_" + secondUser, messag);
                 }
             }
@@ -253,6 +256,12 @@ namespace Chat
         private void messagesFlowLayout_ControlAdded(object sender, ControlEventArgs e)
         {
             messagesFlowLayout.ScrollControlIntoView(e.Control);
+        }
+
+        private void editAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountEdit accountEdit = new AccountEdit(pointer,this);
+            accountEdit.ShowDialog();
         }
     }
 

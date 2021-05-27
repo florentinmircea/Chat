@@ -46,7 +46,7 @@ namespace Chat
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(169, 127);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 27);
+            this.textBox1.Size = new System.Drawing.Size(302, 23);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
@@ -55,7 +55,7 @@ namespace Chat
             this.textBox2.Location = new System.Drawing.Point(169, 175);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '$';
-            this.textBox2.Size = new System.Drawing.Size(302, 27);
+            this.textBox2.Size = new System.Drawing.Size(302, 23);
             this.textBox2.TabIndex = 1;
             // 
             // button_login
@@ -86,7 +86,7 @@ namespace Chat
             this.label_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_username.Location = new System.Drawing.Point(60, 130);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(86, 20);
+            this.label_username.Size = new System.Drawing.Size(73, 17);
             this.label_username.TabIndex = 4;
             this.label_username.Text = "Username";
             // 
@@ -96,7 +96,7 @@ namespace Chat
             this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_password.Location = new System.Drawing.Point(60, 178);
             this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(83, 20);
+            this.label_password.Size = new System.Drawing.Size(69, 17);
             this.label_password.TabIndex = 5;
             this.label_password.Text = "Password";
             // 
@@ -105,7 +105,7 @@ namespace Chat
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(377, 305);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 18);
+            this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 6;
             // 
             // label_Register
@@ -114,7 +114,7 @@ namespace Chat
             this.label_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Register.Location = new System.Drawing.Point(239, 235);
             this.label_Register.Name = "label_Register";
-            this.label_Register.Size = new System.Drawing.Size(79, 24);
+            this.label_Register.Size = new System.Drawing.Size(63, 18);
             this.label_Register.TabIndex = 7;
             this.label_Register.TabStop = true;
             this.label_Register.Text = "Register";
@@ -126,14 +126,14 @@ namespace Chat
             this.label4.Font = new System.Drawing.Font("Verdana", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(200, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(197, 46);
+            this.label4.Size = new System.Drawing.Size(155, 36);
             this.label4.TabIndex = 8;
             this.label4.Text = "PoliChat";
             // 
             // Login
             // 
             this.AcceptButton = this.button_login;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(542, 380);
@@ -156,8 +156,6 @@ namespace Chat
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button_login;
         private System.Windows.Forms.Button button_exit;
@@ -166,6 +164,7 @@ namespace Chat
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel label_Register;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 

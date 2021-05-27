@@ -58,6 +58,8 @@ namespace Chat
             this.trackBar_darkMode = new System.Windows.Forms.TrackBar();
             this.label_darkMode = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_myProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_conv.SuspendLayout();
@@ -259,7 +261,8 @@ namespace Chat
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorSchemesToolStripMenuItem});
+            this.colorSchemesToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -365,6 +368,21 @@ namespace Chat
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editAccountToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editAccountToolStripMenuItem.Text = "Edit account";
+            this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editAccountToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,16 +429,12 @@ namespace Chat
         }
 
         private Splitter splitter1;
-        private PictureBox pictureBox1;
-        private Label label_username;
         private GroupBox groupBox_myProfile;
         private Label label_nrContacte;
-        private Label label_varsta;
         private TextBox textBox_searchContact;
         private Button button_searchContact;
         private PictureBox pictureBox2;
         private RichTextBox richTextBox_conv;
-        private Label label_city;
         private GroupBox groupBox_conv;
         private Label label_cityContact;
         private Label label_ageContact;
@@ -439,5 +453,11 @@ namespace Chat
         private Label label_darkMode;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         public FlowLayoutPanel messagesFlowLayout;
+        private ToolStripMenuItem settingsToolStripMenuItem;
+        private ToolStripMenuItem editAccountToolStripMenuItem;
+        public Label label_username;
+        public Label label_varsta;
+        public Label label_city;
+        public PictureBox pictureBox1;
     }
 }

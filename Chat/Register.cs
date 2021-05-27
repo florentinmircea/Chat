@@ -52,6 +52,8 @@ namespace Chat
                     };
                     PushResponse response = await Login.client.PushAsync("users", user);
                     MessageBox.Show("User created!");
+                    Login.userDictionary.Clear();
+                    Login.userList.Clear();
                     Login.Get_users();
                     this.Close();
                     pointer.Show();
@@ -113,6 +115,7 @@ namespace Chat
             {
                 comboBox1.Items.Add(item.name);
             }
+            comboBox1.SelectedIndex = 0;
         }
 
         private void comboBox1_DropDown(object sender, EventArgs e)
