@@ -19,8 +19,9 @@ namespace Chat
     {
         public static bool isAuth = false;
         public static int currentUserIndex;
-        static Dictionary<string, User> userDictionary;
+        public static Dictionary<string, User> userDictionary;
         public static List<User> userList = new List<User>();
+        public static List<string> userKeys = new List<string>();
         public static IFirebaseConfig config = new FirebaseConfig
         {
             AuthSecret = "inXj8sTPJUWlgLwQVJZSR2p4NR7EeJ4xZwHobH09",
@@ -49,6 +50,7 @@ namespace Chat
                 foreach (var item in aux)
                 {
                     userList.Add(item.Value);
+                    userKeys.Add(item.Key);
                 }
             }
         }

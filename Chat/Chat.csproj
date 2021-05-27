@@ -57,6 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Faculty.cs" />
+    <Compile Include="AccountEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountEdit.Designer.cs">
+      <DependentUpon>AccountEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="messageBlob.cs">
       <SubType>UserControl</SubType>
@@ -98,6 +104,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountEdit.resx">
+      <DependentUpon>AccountEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContactUserControl.resx">
       <DependentUpon>ContactUserControl.cs</DependentUpon>
     </EmbeddedResource>
