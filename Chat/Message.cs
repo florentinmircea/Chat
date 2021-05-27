@@ -8,7 +8,7 @@ namespace Chat
 {
     public class Message
     {
-        public DateTime dts { get; set; }
+        public DateTime? dts { get; set; }
         public string timestamp { get; set; }
         public string messageType { get; set; }
         public string message { get; set; }

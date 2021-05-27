@@ -203,6 +203,7 @@ namespace Chat
             this.messagesFlowLayout.Name = "messagesFlowLayout";
             this.messagesFlowLayout.Size = new System.Drawing.Size(381, 302);
             this.messagesFlowLayout.TabIndex = 13;
+            this.messagesFlowLayout.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.messagesFlowLayout_ControlAdded);
             // 
             // label_cityContact
             // 
