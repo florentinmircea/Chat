@@ -24,6 +24,7 @@ namespace Chat
         static List<Message> messageListLocal = new List<Message>();
         static List<messageBlob> messageBlobList = new List<messageBlob>();
         public messageController mc;
+        ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
         public MainForm(Login point)
         {
             pointer = point;
@@ -50,7 +51,6 @@ namespace Chat
             {
                 BackColor = colorScheme[1];
                 menuStrip.BackColor = colorScheme[0];
-                button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[1];
                 groupBox_myProfile.BackColor = colorScheme[1];
                 //listBox_conv.BackColor = colorScheme[0];
@@ -66,7 +66,6 @@ namespace Chat
             {
                 BackColor = colorScheme[2];
                 menuStrip.BackColor = colorScheme[0];
-                button_searchContact.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[2];
                 groupBox_myProfile.BackColor = colorScheme[2];
                 //listBox_conv.BackColor = colorScheme[1];
@@ -84,7 +83,7 @@ namespace Chat
 
         private void populateList()
         {
-            ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
+
             string university = Login.userList[Login.currentUserIndex].faculty;
             for (int i = 0; i < contactList.Length; i++)
             {
@@ -92,12 +91,12 @@ namespace Chat
                 {
                     contactList[i] = new ContactUserControl(this);
                     contactList[i].UserName = Login.userList[i].username;
-                    contactList[i].LastMessage = "Message blah";
                     contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
                     contactList[i].UserEntity = Login.userList[i];
                     contactListFlowLayoutPanel.Controls.Add(contactList[i]);
                 }
             }
+            
         }
         private void checkList()
         {
@@ -128,6 +127,8 @@ namespace Chat
             pictureBox1.ImageLocation= Login.userList[Login.currentUserIndex].picture;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
+            mc.updateOtherUser(contactList[0].UserEntity);
+            updateOtherUserData(contactList[0].UserEntity);
         }
 
         private void blueLagoonToolStripMenuItem_Click(object sender, EventArgs e)
