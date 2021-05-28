@@ -39,14 +39,6 @@ namespace Chat
             set { _userName = value; contactUsernameLabel.Text = value; }
         }
 
-        private String _lastMessage;
-
-        public String LastMessage
-        {
-            get { return _lastMessage; }
-            set { _lastMessage = value; contactLastMessageLabel.Text = value; }
-        }
-
         private Image _profilePicture;
 
         public Image ProfilePicture

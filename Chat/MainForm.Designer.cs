@@ -37,7 +37,6 @@ namespace Chat
             this.label_varsta = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox_searchContact = new System.Windows.Forms.TextBox();
-            this.button_searchContact = new System.Windows.Forms.Button();
             this.richTextBox_conv = new System.Windows.Forms.RichTextBox();
             this.groupBox_conv = new System.Windows.Forms.GroupBox();
             this.messagesFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,11 +54,12 @@ namespace Chat
             this.tourquoiseDreamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vintageHouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.violetBluesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackBar_darkMode = new System.Windows.Forms.TrackBar();
             this.label_darkMode = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelFaculty = new System.Windows.Forms.Label();
             this.groupBox_myProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_conv.SuspendLayout();
@@ -91,6 +91,7 @@ namespace Chat
             // 
             // groupBox_myProfile
             // 
+            this.groupBox_myProfile.Controls.Add(this.labelFaculty);
             this.groupBox_myProfile.Controls.Add(this.label_city);
             this.groupBox_myProfile.Controls.Add(this.label_nrContacte);
             this.groupBox_myProfile.Controls.Add(this.label_varsta);
@@ -110,7 +111,7 @@ namespace Chat
             // 
             this.label_city.AutoSize = true;
             this.label_city.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label_city.Location = new System.Drawing.Point(85, 86);
+            this.label_city.Location = new System.Drawing.Point(85, 77);
             this.label_city.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_city.Name = "label_city";
             this.label_city.Size = new System.Drawing.Size(33, 19);
@@ -121,7 +122,7 @@ namespace Chat
             // 
             this.label_nrContacte.AutoSize = true;
             this.label_nrContacte.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label_nrContacte.Location = new System.Drawing.Point(85, 112);
+            this.label_nrContacte.Location = new System.Drawing.Point(85, 96);
             this.label_nrContacte.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_nrContacte.Name = "label_nrContacte";
             this.label_nrContacte.Size = new System.Drawing.Size(63, 19);
@@ -151,22 +152,11 @@ namespace Chat
             // textBox_searchContact
             // 
             this.textBox_searchContact.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox_searchContact.Location = new System.Drawing.Point(91, 187);
+            this.textBox_searchContact.Location = new System.Drawing.Point(11, 187);
             this.textBox_searchContact.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_searchContact.Name = "textBox_searchContact";
-            this.textBox_searchContact.Size = new System.Drawing.Size(254, 29);
+            this.textBox_searchContact.Size = new System.Drawing.Size(334, 29);
             this.textBox_searchContact.TabIndex = 7;
-            // 
-            // button_searchContact
-            // 
-            this.button_searchContact.Location = new System.Drawing.Point(20, 187);
-            this.button_searchContact.Margin = new System.Windows.Forms.Padding(2);
-            this.button_searchContact.Name = "button_searchContact";
-            this.button_searchContact.Size = new System.Drawing.Size(58, 26);
-            this.button_searchContact.TabIndex = 8;
-            this.button_searchContact.Text = "Search";
-            this.button_searchContact.UseVisualStyleBackColor = true;
-            this.button_searchContact.Click += new System.EventHandler(this.button_searchContact_Click);
             // 
             // richTextBox_conv
             // 
@@ -340,6 +330,21 @@ namespace Chat
             this.violetBluesToolStripMenuItem.Text = "Violet Blues";
             this.violetBluesToolStripMenuItem.Click += new System.EventHandler(this.violetBluesToolStripMenuItem_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editAccountToolStripMenuItem});
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // editAccountToolStripMenuItem
+            // 
+            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.editAccountToolStripMenuItem.Text = "Edit account";
+            this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editAccountToolStripMenuItem_Click);
+            // 
             // trackBar_darkMode
             // 
             this.trackBar_darkMode.LargeChange = 1;
@@ -368,20 +373,14 @@ namespace Chat
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // settingsToolStripMenuItem
+            // labelFaculty
             // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAccountToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // editAccountToolStripMenuItem
-            // 
-            this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
-            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editAccountToolStripMenuItem.Text = "Edit account";
-            this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editAccountToolStripMenuItem_Click);
+            this.labelFaculty.AutoSize = true;
+            this.labelFaculty.Location = new System.Drawing.Point(85, 115);
+            this.labelFaculty.Name = "labelFaculty";
+            this.labelFaculty.Size = new System.Drawing.Size(58, 21);
+            this.labelFaculty.TabIndex = 8;
+            this.labelFaculty.Text = "Faculty";
             // 
             // MainForm
             // 
@@ -391,7 +390,6 @@ namespace Chat
             this.Controls.Add(this.label_darkMode);
             this.Controls.Add(this.contactListFlowLayoutPanel);
             this.Controls.Add(this.groupBox_conv);
-            this.Controls.Add(this.button_searchContact);
             this.Controls.Add(this.textBox_searchContact);
             this.Controls.Add(this.groupBox_myProfile);
             this.Controls.Add(this.splitter1);
@@ -432,7 +430,6 @@ namespace Chat
         private GroupBox groupBox_myProfile;
         private Label label_nrContacte;
         private TextBox textBox_searchContact;
-        private Button button_searchContact;
         private PictureBox pictureBox2;
         private RichTextBox richTextBox_conv;
         private GroupBox groupBox_conv;
@@ -459,5 +456,6 @@ namespace Chat
         public Label label_varsta;
         public Label label_city;
         public PictureBox pictureBox1;
+        private Label labelFaculty;
     }
 }

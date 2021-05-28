@@ -27,7 +27,7 @@ namespace Chat
             label2.Text = initial;
             label3.Text = timestamp;
 
-            if (!sender)
+            if (sender)
             {
                 label1.Dock = DockStyle.Right;
                 label2.Dock = DockStyle.Right;
