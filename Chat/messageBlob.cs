@@ -18,7 +18,7 @@ namespace Chat
         private string initial;
         private string timestamp;
         private int nrOfLines;
-        private int fontSize = 24;
+        private int fontSize = 16;
         private int nrOfCharsInRow = 24;
         public messageBlob(string message, string timestamp, Boolean sender, string initial)
         {
@@ -31,11 +31,11 @@ namespace Chat
             this.panel1.Height = fontSize * nrOfLines;
             this.label1.Height = fontSize * nrOfLines;
 
-            this.panel3.Height = 20;
-            this.panel2.Dock = DockStyle.Top;
-            this.panel3.Dock = DockStyle.Bottom;
-            this.label3.Dock = DockStyle.Bottom;
-            this.label3.Location = new Point(25, 0);
+            //this.panel3.Height = 60;
+            //this.panel2.Dock = DockStyle.Top;
+            //this.panel3.Dock = DockStyle.Bottom;
+            //this.label3.Dock = DockStyle.Bottom;
+            //this.label3.Location = new Point(25, 0);
 
             for (int j = 1; j < nrOfLines; j++ )
             {
