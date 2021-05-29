@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Chat
 {
     public partial class messageBlob : UserControl
@@ -16,9 +17,33 @@ namespace Chat
         private Boolean sender;
         private string initial;
         private string timestamp;
+        private int nrOfLines;
+        private int fontSize = 40;
+        private int nrOfCharsInRow = 24;
         public messageBlob(string message, string timestamp, Boolean sender, string initial)
         {
+            double aux = Convert.ToDouble(message.Length) / nrOfCharsInRow;
+            nrOfLines = Convert.ToInt32(Math.Ceiling(aux));
             InitializeComponent();
+            this.Height = 42 + (nrOfLines - 1) * fontSize;
+            this.label3.Dock = DockStyle.Bottom;
+            this.label3.Location = new Point(25, 0);
+            this.panel2.Height = 40 + (nrOfLines - 1) * fontSize;
+            this.panel1.Height = fontSize * nrOfLines;
+            this.label1.Height = fontSize * nrOfLines;
+
+
+            for (int j = 1; j < nrOfLines; j++ )
+            {
+                for (int i = 23; i >0; i--)
+                {
+                    if (message[24 * (j-1) + i] == ' ')
+                    {
+                        message = message.Insert(24 * (j-1) + i, "\n");
+                        i = 0;
+                    }
+                }
+            }
             this.message = message;
             this.sender = sender;
             this.initial = initial;
@@ -57,6 +82,11 @@ namespace Chat
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void messageBlob_Load(object sender, EventArgs e)
         {
 
         }
