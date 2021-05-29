@@ -61,7 +61,7 @@ namespace Chat
             string current_password = textBox2.Text;
             if (current_password == "" || current_username == "")
             {
-                MessageBox.Show("Please insert Username and password!");
+                MessageBox.Show("Please insert username and/or password!");
             }
             else
             {
@@ -84,7 +84,7 @@ namespace Chat
                 }
                 else
                 {
-                    MessageBox.Show("Wrong Username or password!");
+                    MessageBox.Show("Wrong username or password!");
                 }
             }
         }
@@ -116,6 +116,7 @@ namespace Chat
             button_login.ForeColor = darkColor;
             button_exit.BackColor = mediumColor;
             button_exit.ForeColor = darkColor;
+            pictureBox_logo.BackColor = lightColor;
             foreach (Control c in Controls)
             {
                 if (c.GetType() == typeof(Label))

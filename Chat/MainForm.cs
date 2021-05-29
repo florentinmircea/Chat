@@ -31,8 +31,8 @@ namespace Chat
             InitializeComponent();
             populateList();
             checkList();
-            contactListFlowLayoutPanel.AutoScroll = true;
-            messagesFlowLayout.AutoScroll = true;
+            //contactListFlowLayoutPanel.AutoScroll = true;
+            //messagesFlowLayout.AutoScroll = true;
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
@@ -53,7 +53,7 @@ namespace Chat
                 menuStrip.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[1];
                 groupBox_myProfile.BackColor = colorScheme[1];
-                //listBox_conv.BackColor = colorScheme[0];
+                messagesFlowLayout.BackColor = colorScheme[0];
                 richTextBox_conv.BackColor = colorScheme[0];
                 contactListFlowLayoutPanel.BackColor = colorScheme[0];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -61,6 +61,17 @@ namespace Chat
                 groupBox_conv.ForeColor = Color.Black;
                 groupBox_myProfile.ForeColor = Color.Black;
                 label_darkMode.ForeColor = Color.Black;
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[1];
+                        msb.ForeColor = Color.Black;
+                    }
             }
             else if (colorMode.Equals("DARK"))
             {
@@ -68,7 +79,7 @@ namespace Chat
                 menuStrip.BackColor = colorScheme[0];
                 groupBox_conv.BackColor = colorScheme[2];
                 groupBox_myProfile.BackColor = colorScheme[2];
-                //listBox_conv.BackColor = colorScheme[1];
+                messagesFlowLayout.BackColor = colorScheme[1];
                 richTextBox_conv.BackColor = colorScheme[1];
                 contactListFlowLayoutPanel.BackColor = colorScheme[1];
                 foreach (ContactUserControl contact in contactListFlowLayoutPanel.Controls)
@@ -76,59 +87,18 @@ namespace Chat
                 groupBox_conv.ForeColor = colorScheme[0];
                 groupBox_myProfile.ForeColor = colorScheme[0];
                 label_darkMode.ForeColor = colorScheme[0];
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[0];
+                        msb.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
             }
-        }
-
-
-
-        private void populateList()
-        {
-
-            string university = Login.userList[Login.currentUserIndex].faculty;
-            for (int i = 0; i < contactList.Length; i++)
-            {
-                if (i != Login.currentUserIndex && Login.userList[i].faculty == university)
-                {
-                    contactList[i] = new ContactUserControl(this);
-                    contactList[i].UserName = Login.userList[i].username;
-                    contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
-                    contactList[i].UserEntity = Login.userList[i];
-                    contactListFlowLayoutPanel.Controls.Add(contactList[i]);
-                }
-            }
-            
-        }
-        private void checkList()
-        {
-            // MessageBox.Show(contactListFlowLayoutPanel.Controls.Count.ToString());
-        }
-        private void button_searchContact_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
-            pointer.Show();
-            Login.isAuth = false;
-        }
-
-        private void groupBox_conv_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            label_username.Text = Login.userList[Login.currentUserIndex].fullName;
-            label_varsta.Text = Login.userList[Login.currentUserIndex].age;
-            label_city.Text = Login.userList[Login.currentUserIndex].city;
-            pictureBox1.ImageLocation= Login.userList[Login.currentUserIndex].picture;
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
-            mc.updateOtherUser(contactList[0].UserEntity);
-            updateOtherUserData(contactList[0].UserEntity);
         }
 
         private void blueLagoonToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,6 +152,50 @@ namespace Chat
             RefreshColorScheme(colorMode);
         }
 
+        private void populateList()
+        {
+
+            string university = Login.userList[Login.currentUserIndex].faculty;
+            for (int i = 0; i < contactList.Length; i++)
+            {
+                if (i != Login.currentUserIndex && Login.userList[i].faculty == university)
+                {
+                    contactList[i] = new ContactUserControl(this);
+                    contactList[i].UserName = Login.userList[i].username;
+                    contactList[i].pictureBox1.ImageLocation = Login.userList[i].picture;
+                    contactList[i].UserEntity = Login.userList[i];
+                    contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                }
+            }
+            label_nrContacte.Text = (contactList.Length - 1) + " contacts";
+        }
+        private void checkList()
+        {
+            // MessageBox.Show(contactListFlowLayoutPanel.Controls.Count.ToString());
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
+            pointer.Show();
+            Login.isAuth = false;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            label_ageContact.Text = "";
+            label_cityContact.Text = "";
+            label_username.Text = Login.userList[Login.currentUserIndex].fullName;
+            label_varsta.Text = Login.userList[Login.currentUserIndex].age;
+            label_city.Text = Login.userList[Login.currentUserIndex].city;
+            labelFaculty.Text = Login.userList[Login.currentUserIndex].faculty;
+            pictureBox1.ImageLocation = Login.userList[Login.currentUserIndex].picture;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
+            //mc.updateOtherUser(contactList[0].UserEntity);
+            //updateOtherUserData(contactList[0].UserEntity);
+        }
+
         public void updateOtherUserData(User otherUserEntity)
         {
             label_ageContact.Invoke((MethodInvoker)(() => label_ageContact.Text = otherUserEntity.age));
@@ -209,11 +223,6 @@ namespace Chat
                 }
             }
             catch { };
-        }
-
-        private void richTextBox_conv_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private async void richTextBox_conv_KeyDown_1(object sender, KeyEventArgs e)
@@ -257,12 +266,52 @@ namespace Chat
         private void messagesFlowLayout_ControlAdded(object sender, ControlEventArgs e)
         {
             messagesFlowLayout.ScrollControlIntoView(e.Control);
+
+            if (colorMode.Equals("LIGHT"))
+            {
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[1];
+                        msb.ForeColor = Color.Black;
+                    }
+            }
+            else if (colorMode.Equals("DARK"))
+            {
+                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                    if (msb.getSender())
+                    {
+                        msb.BackColor = colorScheme[0];
+                        msb.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        msb.BackColor = colorScheme[2];
+                        msb.ForeColor = colorScheme[0];
+                    }
+            }
         }
 
         private void editAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountEdit accountEdit = new AccountEdit(pointer,this);
+            AccountEdit accountEdit = new AccountEdit(pointer, this);
             accountEdit.ShowDialog();
+        }
+
+        private void deleteAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountEdit accountEdit = new AccountEdit(pointer, this);
+            accountEdit.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
         }
     }
 

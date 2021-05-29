@@ -32,6 +32,7 @@ namespace Chat
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.label_username = new System.Windows.Forms.Label();
             this.groupBox_myProfile = new System.Windows.Forms.GroupBox();
+            this.labelFaculty = new System.Windows.Forms.Label();
             this.label_city = new System.Windows.Forms.Label();
             this.label_nrContacte = new System.Windows.Forms.Label();
             this.label_varsta = new System.Windows.Forms.Label();
@@ -56,10 +57,11 @@ namespace Chat
             this.violetBluesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackBar_darkMode = new System.Windows.Forms.TrackBar();
             this.label_darkMode = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.labelFaculty = new System.Windows.Forms.Label();
             this.groupBox_myProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_conv.SuspendLayout();
@@ -71,7 +73,7 @@ namespace Chat
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 24);
+            this.splitter1.Location = new System.Drawing.Point(0, 29);
             this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(351, 491);
@@ -82,7 +84,7 @@ namespace Chat
             // 
             this.label_username.AutoSize = true;
             this.label_username.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_username.Location = new System.Drawing.Point(6, 25);
+            this.label_username.Location = new System.Drawing.Point(4, 22);
             this.label_username.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_username.Name = "label_username";
             this.label_username.Size = new System.Drawing.Size(120, 32);
@@ -102,57 +104,67 @@ namespace Chat
             this.groupBox_myProfile.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_myProfile.Name = "groupBox_myProfile";
             this.groupBox_myProfile.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox_myProfile.Size = new System.Drawing.Size(334, 144);
+            this.groupBox_myProfile.Size = new System.Drawing.Size(334, 158);
             this.groupBox_myProfile.TabIndex = 5;
             this.groupBox_myProfile.TabStop = false;
             this.groupBox_myProfile.Text = "My profile";
             // 
+            // labelFaculty
+            // 
+            this.labelFaculty.AutoSize = true;
+            this.labelFaculty.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFaculty.Location = new System.Drawing.Point(122, 129);
+            this.labelFaculty.Name = "labelFaculty";
+            this.labelFaculty.Size = new System.Drawing.Size(54, 20);
+            this.labelFaculty.TabIndex = 8;
+            this.labelFaculty.Text = "Faculty";
+            // 
             // label_city
             // 
             this.label_city.AutoSize = true;
-            this.label_city.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label_city.Location = new System.Drawing.Point(85, 77);
+            this.label_city.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_city.Location = new System.Drawing.Point(122, 80);
             this.label_city.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_city.Name = "label_city";
-            this.label_city.Size = new System.Drawing.Size(33, 19);
+            this.label_city.Size = new System.Drawing.Size(34, 20);
             this.label_city.TabIndex = 7;
             this.label_city.Text = "City";
             // 
             // label_nrContacte
             // 
             this.label_nrContacte.AutoSize = true;
-            this.label_nrContacte.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label_nrContacte.Location = new System.Drawing.Point(85, 96);
+            this.label_nrContacte.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_nrContacte.Location = new System.Drawing.Point(122, 104);
             this.label_nrContacte.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_nrContacte.Name = "label_nrContacte";
-            this.label_nrContacte.Size = new System.Drawing.Size(63, 19);
+            this.label_nrContacte.Size = new System.Drawing.Size(66, 20);
             this.label_nrContacte.TabIndex = 6;
             this.label_nrContacte.Text = "Contacts";
             // 
             // label_varsta
             // 
             this.label_varsta.AutoSize = true;
-            this.label_varsta.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label_varsta.Location = new System.Drawing.Point(85, 58);
+            this.label_varsta.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_varsta.Location = new System.Drawing.Point(122, 56);
             this.label_varsta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_varsta.Name = "label_varsta";
-            this.label_varsta.Size = new System.Drawing.Size(33, 19);
+            this.label_varsta.Size = new System.Drawing.Size(36, 20);
             this.label_varsta.TabIndex = 5;
             this.label_varsta.Text = "Age";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(11, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 56);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 65);
+            this.pictureBox1.Size = new System.Drawing.Size(95, 95);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // textBox_searchContact
             // 
             this.textBox_searchContact.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox_searchContact.Location = new System.Drawing.Point(11, 187);
+            this.textBox_searchContact.Location = new System.Drawing.Point(11, 202);
             this.textBox_searchContact.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_searchContact.Name = "textBox_searchContact";
             this.textBox_searchContact.Size = new System.Drawing.Size(334, 29);
@@ -160,13 +172,12 @@ namespace Chat
             // 
             // richTextBox_conv
             // 
-            this.richTextBox_conv.Location = new System.Drawing.Point(12, 393);
+            this.richTextBox_conv.Location = new System.Drawing.Point(8, 393);
             this.richTextBox_conv.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox_conv.Name = "richTextBox_conv";
             this.richTextBox_conv.Size = new System.Drawing.Size(381, 56);
             this.richTextBox_conv.TabIndex = 11;
             this.richTextBox_conv.Text = "";
-            this.richTextBox_conv.TextChanged += new System.EventHandler(this.richTextBox_conv_TextChanged);
             this.richTextBox_conv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox_conv_KeyDown_1);
             // 
             // groupBox_conv
@@ -178,19 +189,19 @@ namespace Chat
             this.groupBox_conv.Controls.Add(this.richTextBox_conv);
             this.groupBox_conv.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.groupBox_conv.Location = new System.Drawing.Point(356, 55);
-            this.groupBox_conv.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox_conv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.groupBox_conv.Name = "groupBox_conv";
             this.groupBox_conv.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox_conv.Size = new System.Drawing.Size(397, 460);
             this.groupBox_conv.TabIndex = 8;
             this.groupBox_conv.TabStop = false;
-            this.groupBox_conv.Text = "usenameContact";
-            this.groupBox_conv.Enter += new System.EventHandler(this.groupBox_conv_Enter);
+            this.groupBox_conv.Text = "Select a contact to see the conversation";
             // 
             // messagesFlowLayout
             // 
             this.messagesFlowLayout.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.messagesFlowLayout.Location = new System.Drawing.Point(12, 79);
+            this.messagesFlowLayout.AutoScroll = true;
+            this.messagesFlowLayout.Location = new System.Drawing.Point(8, 84);
             this.messagesFlowLayout.Margin = new System.Windows.Forms.Padding(2);
             this.messagesFlowLayout.Name = "messagesFlowLayout";
             this.messagesFlowLayout.Size = new System.Drawing.Size(381, 302);
@@ -200,43 +211,45 @@ namespace Chat
             // label_cityContact
             // 
             this.label_cityContact.AutoSize = true;
-            this.label_cityContact.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_cityContact.Location = new System.Drawing.Point(64, 46);
+            this.label_cityContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_cityContact.Location = new System.Drawing.Point(64, 50);
             this.label_cityContact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_cityContact.Name = "label_cityContact";
-            this.label_cityContact.Size = new System.Drawing.Size(28, 15);
+            this.label_cityContact.Size = new System.Drawing.Size(29, 17);
             this.label_cityContact.TabIndex = 12;
             this.label_cityContact.Text = "City";
             // 
             // label_ageContact
             // 
             this.label_ageContact.AutoSize = true;
-            this.label_ageContact.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_ageContact.Location = new System.Drawing.Point(63, 30);
+            this.label_ageContact.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ageContact.Location = new System.Drawing.Point(63, 29);
             this.label_ageContact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_ageContact.Name = "label_ageContact";
-            this.label_ageContact.Size = new System.Drawing.Size(28, 15);
+            this.label_ageContact.Size = new System.Drawing.Size(31, 17);
             this.label_ageContact.TabIndex = 9;
             this.label_ageContact.Text = "Age";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(12, 25);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 28);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(46, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
             // contactListFlowLayoutPanel
             // 
-            this.contactListFlowLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.contactListFlowLayoutPanel.AutoScroll = true;
+            this.contactListFlowLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.contactListFlowLayoutPanel.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.contactListFlowLayoutPanel.Location = new System.Drawing.Point(9, 229);
+            this.contactListFlowLayoutPanel.Location = new System.Drawing.Point(9, 239);
             this.contactListFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.contactListFlowLayoutPanel.Name = "contactListFlowLayoutPanel";
-            this.contactListFlowLayoutPanel.Size = new System.Drawing.Size(334, 260);
+            this.contactListFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.contactListFlowLayoutPanel.Size = new System.Drawing.Size(334, 265);
             this.contactListFlowLayoutPanel.TabIndex = 13;
             // 
             // panel1
@@ -249,14 +262,16 @@ namespace Chat
             // 
             // menuStrip
             // 
+            this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorSchemesToolStripMenuItem,
-            this.settingsToolStripMenuItem});
+            this.settingsToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip.Size = new System.Drawing.Size(762, 29);
             this.menuStrip.TabIndex = 14;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -271,14 +286,14 @@ namespace Chat
             this.vintageHouseToolStripMenuItem,
             this.violetBluesToolStripMenuItem});
             this.colorSchemesToolStripMenuItem.Name = "colorSchemesToolStripMenuItem";
-            this.colorSchemesToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.colorSchemesToolStripMenuItem.Size = new System.Drawing.Size(124, 25);
             this.colorSchemesToolStripMenuItem.Text = "Color schemes";
             // 
             // blueLagoonToolStripMenuItem
             // 
             this.blueLagoonToolStripMenuItem.Image = global::Chat.Resource.Blue_lagoon;
             this.blueLagoonToolStripMenuItem.Name = "blueLagoonToolStripMenuItem";
-            this.blueLagoonToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.blueLagoonToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.blueLagoonToolStripMenuItem.Text = "Blue Lagoon";
             this.blueLagoonToolStripMenuItem.Click += new System.EventHandler(this.blueLagoonToolStripMenuItem_Click);
             // 
@@ -286,7 +301,7 @@ namespace Chat
             // 
             this.pinkDrinkToolStripMenuItem.Image = global::Chat.Resource.Pink_drink;
             this.pinkDrinkToolStripMenuItem.Name = "pinkDrinkToolStripMenuItem";
-            this.pinkDrinkToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.pinkDrinkToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.pinkDrinkToolStripMenuItem.Text = "Pink Drink";
             this.pinkDrinkToolStripMenuItem.Click += new System.EventHandler(this.pinkDrinkToolStripMenuItem_Click);
             // 
@@ -294,7 +309,7 @@ namespace Chat
             // 
             this.richBurgundyToolStripMenuItem.Image = global::Chat.Resource.Rich_burgundy;
             this.richBurgundyToolStripMenuItem.Name = "richBurgundyToolStripMenuItem";
-            this.richBurgundyToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.richBurgundyToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.richBurgundyToolStripMenuItem.Text = "Rich Burgundy";
             this.richBurgundyToolStripMenuItem.Click += new System.EventHandler(this.richBurgundyToolStripMenuItem_Click);
             // 
@@ -302,7 +317,7 @@ namespace Chat
             // 
             this.springGreenToolStripMenuItem.Image = global::Chat.Resource.Spring_green;
             this.springGreenToolStripMenuItem.Name = "springGreenToolStripMenuItem";
-            this.springGreenToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.springGreenToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.springGreenToolStripMenuItem.Text = "Spring Green";
             this.springGreenToolStripMenuItem.Click += new System.EventHandler(this.springGreenToolStripMenuItem_Click);
             // 
@@ -310,7 +325,7 @@ namespace Chat
             // 
             this.tourquoiseDreamToolStripMenuItem.Image = global::Chat.Resource.Tourqoise_dream;
             this.tourquoiseDreamToolStripMenuItem.Name = "tourquoiseDreamToolStripMenuItem";
-            this.tourquoiseDreamToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.tourquoiseDreamToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.tourquoiseDreamToolStripMenuItem.Text = "Tourquoise Dream";
             this.tourquoiseDreamToolStripMenuItem.Click += new System.EventHandler(this.tourquoiseDreamToolStripMenuItem_Click);
             // 
@@ -318,7 +333,7 @@ namespace Chat
             // 
             this.vintageHouseToolStripMenuItem.Image = global::Chat.Resource.Vintage_house;
             this.vintageHouseToolStripMenuItem.Name = "vintageHouseToolStripMenuItem";
-            this.vintageHouseToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.vintageHouseToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.vintageHouseToolStripMenuItem.Text = "Vintage House";
             this.vintageHouseToolStripMenuItem.Click += new System.EventHandler(this.vintageHouseToolStripMenuItem_Click);
             // 
@@ -326,30 +341,45 @@ namespace Chat
             // 
             this.violetBluesToolStripMenuItem.Image = global::Chat.Resource.Violet_blues;
             this.violetBluesToolStripMenuItem.Name = "violetBluesToolStripMenuItem";
-            this.violetBluesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.violetBluesToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.violetBluesToolStripMenuItem.Text = "Violet Blues";
             this.violetBluesToolStripMenuItem.Click += new System.EventHandler(this.violetBluesToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAccountToolStripMenuItem});
+            this.editAccountToolStripMenuItem,
+            this.deleteAccountToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(78, 25);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // editAccountToolStripMenuItem
             // 
             this.editAccountToolStripMenuItem.Name = "editAccountToolStripMenuItem";
-            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.editAccountToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.editAccountToolStripMenuItem.Text = "Edit account";
             this.editAccountToolStripMenuItem.Click += new System.EventHandler(this.editAccountToolStripMenuItem_Click);
+            // 
+            // deleteAccountToolStripMenuItem
+            // 
+            this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
+            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.deleteAccountToolStripMenuItem.Text = "Delete account";
+            this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(46, 25);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // trackBar_darkMode
             // 
             this.trackBar_darkMode.LargeChange = 1;
-            this.trackBar_darkMode.Location = new System.Drawing.Point(578, 33);
-            this.trackBar_darkMode.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBar_darkMode.Location = new System.Drawing.Point(622, 33);
+            this.trackBar_darkMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.trackBar_darkMode.Maximum = 1;
             this.trackBar_darkMode.Name = "trackBar_darkMode";
             this.trackBar_darkMode.Size = new System.Drawing.Size(38, 45);
@@ -361,7 +391,7 @@ namespace Chat
             // 
             this.label_darkMode.AutoSize = true;
             this.label_darkMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_darkMode.Location = new System.Drawing.Point(611, 33);
+            this.label_darkMode.Location = new System.Drawing.Point(653, 33);
             this.label_darkMode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_darkMode.Name = "label_darkMode";
             this.label_darkMode.Size = new System.Drawing.Size(87, 20);
@@ -373,20 +403,11 @@ namespace Chat
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // labelFaculty
-            // 
-            this.labelFaculty.AutoSize = true;
-            this.labelFaculty.Location = new System.Drawing.Point(85, 115);
-            this.labelFaculty.Name = "labelFaculty";
-            this.labelFaculty.Size = new System.Drawing.Size(58, 21);
-            this.labelFaculty.TabIndex = 8;
-            this.labelFaculty.Text = "Faculty";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 515);
+            this.ClientSize = new System.Drawing.Size(762, 520);
             this.Controls.Add(this.label_darkMode);
             this.Controls.Add(this.contactListFlowLayoutPanel);
             this.Controls.Add(this.groupBox_conv);
@@ -396,6 +417,7 @@ namespace Chat
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.trackBar_darkMode);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
@@ -457,5 +479,7 @@ namespace Chat
         public Label label_city;
         public PictureBox pictureBox1;
         private Label labelFaculty;
+        private ToolStripMenuItem deleteAccountToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }
