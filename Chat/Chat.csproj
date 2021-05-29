@@ -151,6 +151,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\logo.png" />
     <None Include="Resources\Violet blues.png" />
     <None Include="Resources\Vintage house.png" />
     <None Include="Resources\Tourqoise dream.png" />

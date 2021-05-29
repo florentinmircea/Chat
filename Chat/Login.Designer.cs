@@ -39,6 +39,8 @@ namespace Chat
             this.label3 = new System.Windows.Forms.Label();
             this.label_Register = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox_logo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -124,11 +126,22 @@ namespace Chat
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(200, 28);
+            this.label4.Location = new System.Drawing.Point(187, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(155, 36);
             this.label4.TabIndex = 8;
             this.label4.Text = "PoliChat";
+            // 
+            // pictureBox_logo
+            // 
+            this.pictureBox_logo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pictureBox_logo.Image = global::Chat.Resource.logo;
+            this.pictureBox_logo.Location = new System.Drawing.Point(333, 31);
+            this.pictureBox_logo.Name = "pictureBox_logo";
+            this.pictureBox_logo.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_logo.TabIndex = 9;
+            this.pictureBox_logo.TabStop = false;
             // 
             // Login
             // 
@@ -136,7 +149,9 @@ namespace Chat
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(542, 380);
+            this.Controls.Add(this.pictureBox_logo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label_Register);
             this.Controls.Add(this.label3);
@@ -146,10 +161,12 @@ namespace Chat
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +182,7 @@ namespace Chat
         private System.Windows.Forms.LinkLabel label_Register;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pictureBox_logo;
     }
 }
 

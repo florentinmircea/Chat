@@ -18,7 +18,7 @@ namespace Chat
         MainForm pointerMainForm;
         static Dictionary<string, Faculty> facultiesDictionary;
         static List<Faculty> facultiesList = new List<Faculty>();
-        public AccountEdit(Login point,MainForm pointerMain)
+        public AccountEdit(Login point, MainForm pointerMain)
         {
             pointer = point;
             pointerMainForm = pointerMain;
@@ -34,8 +34,8 @@ namespace Chat
             BackColor = lightColor;
             update_btn.BackColor = mediumColor;
             update_btn.ForeColor = darkColor;
-            delete_btn.BackColor = Color.DarkRed;
-            delete_btn.ForeColor = Color.White;
+            delete_btn.BackColor = Color.FromArgb(88, 55, 85);
+            delete_btn.ForeColor = lightColor;
             foreach (Control c in Controls)
             {
                 if (c.GetType() == typeof(Label))
@@ -45,8 +45,8 @@ namespace Chat
 
         private async void delete_btn_Click(object sender, EventArgs e)
         {
-            FirebaseResponse response = await Login.client.DeleteAsync("users/"+Login.userKeys[Login.currentUserIndex]);
-            if(response.StatusCode.ToString().Equals("OK"))
+            FirebaseResponse response = await Login.client.DeleteAsync("users/" + Login.userKeys[Login.currentUserIndex]);
+            if (response.StatusCode.ToString().Equals("OK"))
             {
                 MessageBox.Show("User deleted!");
                 this.Close();

@@ -63,5 +63,9 @@ namespace Chat
             }
         }
 
+        public Boolean getSender()
+        {
+            return sender;
+        }
     }
 }
