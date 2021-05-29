@@ -50,7 +50,6 @@
             this.label1.Size = new System.Drawing.Size(60, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -61,7 +60,6 @@
             this.label2.Size = new System.Drawing.Size(25, 101);
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -87,7 +85,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(220, 25);
             this.panel1.TabIndex = 5;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -98,7 +95,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(282, 21);
             this.panel3.TabIndex = 6;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label3
             // 
@@ -111,7 +107,6 @@
             this.label3.Text = "label3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.UseCompatibleTextRendering = true;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // messageBlob
             // 
@@ -122,7 +117,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "messageBlob";
             this.Size = new System.Drawing.Size(312, 103);
-            this.Load += new System.EventHandler(this.messageBlob_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

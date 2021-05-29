@@ -27,15 +27,8 @@ namespace Chat
             InitializeComponent();
             this.Height = 42 + (nrOfLines - 1) * fontSize;
 
-            //this.panel2.Height = 15 + (nrOfLines - 1) * fontSize;
             this.panel1.Height = fontSize * nrOfLines;
             this.label1.Height = fontSize * nrOfLines;
-
-            //this.panel3.Height = 60;
-            //this.panel2.Dock = DockStyle.Top;
-            //this.panel3.Dock = DockStyle.Bottom;
-            //this.label3.Dock = DockStyle.Bottom;
-            //this.label3.Location = new Point(25, 0);
 
             for (int j = 1; j < nrOfLines; j++ )
             {
@@ -70,34 +63,5 @@ namespace Chat
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void messageBlob_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

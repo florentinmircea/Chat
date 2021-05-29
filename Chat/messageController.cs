@@ -25,6 +25,7 @@ namespace Chat
             this.mf = mf;
             this.mm = new messageModel(currentUser, otherUser, this);
             Thread thr = new Thread(new ThreadStart(this.permanentThread));
+            thr.IsBackground = true;
             thr.Start();
         }
 
