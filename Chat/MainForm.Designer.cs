@@ -111,7 +111,7 @@ namespace Chat
             // 
             this.labelFaculty.AutoSize = true;
             this.labelFaculty.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFaculty.Location = new System.Drawing.Point(122, 129);
+            this.labelFaculty.Location = new System.Drawing.Point(122, 106);
             this.labelFaculty.Name = "labelFaculty";
             this.labelFaculty.Size = new System.Drawing.Size(54, 20);
             this.labelFaculty.TabIndex = 8;
@@ -132,7 +132,7 @@ namespace Chat
             // 
             this.label_nrContacte.AutoSize = true;
             this.label_nrContacte.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_nrContacte.Location = new System.Drawing.Point(122, 104);
+            this.label_nrContacte.Location = new System.Drawing.Point(122, 131);
             this.label_nrContacte.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_nrContacte.Name = "label_nrContacte";
             this.label_nrContacte.Size = new System.Drawing.Size(66, 20);

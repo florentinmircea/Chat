@@ -12,7 +12,6 @@ namespace Chat
 {
     public partial class ContactUserControl : UserControl
     {
-        //private string 
         MainForm mainForm;
 
         private User _user;
@@ -74,13 +73,6 @@ namespace Chat
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            mainForm.mc.updateOtherUser(_user);
-            mainForm.updateOtherUserData(_user);
-            MainForm.otherUser = _user;
-        }
-
-        private void contactLastMessageLabel_MouseClick(object sender, MouseEventArgs e)
         {
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
