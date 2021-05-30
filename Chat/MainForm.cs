@@ -30,9 +30,6 @@ namespace Chat
             pointer = point;
             InitializeComponent();
             populateList();
-            checkList();
-            //contactListFlowLayoutPanel.AutoScroll = true;
-            //messagesFlowLayout.AutoScroll = true;
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
@@ -167,11 +164,7 @@ namespace Chat
                     contactListFlowLayoutPanel.Controls.Add(contactList[i]);
                 }
             }
-            label_nrContacte.Text = (contactList.Length - 1) + " contacts";
-        }
-        private void checkList()
-        {
-            // MessageBox.Show(contactListFlowLayoutPanel.Controls.Count.ToString());
+            label_nrContacte.Text = contactListFlowLayoutPanel.Controls.Count + " contacts";
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -192,8 +185,8 @@ namespace Chat
             pictureBox1.ImageLocation = Login.userList[Login.currentUserIndex].picture;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
-            //mc.updateOtherUser(contactList[0].UserEntity);
-            //updateOtherUserData(contactList[0].UserEntity);
+            mc.updateOtherUser(contactList[0].UserEntity);
+            updateOtherUserData(contactList[0].UserEntity);
         }
 
         public void updateOtherUserData(User otherUserEntity)
@@ -204,7 +197,6 @@ namespace Chat
             groupBox_conv.Invoke((MethodInvoker)(() => groupBox_conv.Text = otherUserEntity.username));
         }
 
-        //public void messageController()
         public void updateMessageView(List<Message> messageList, string currentUser, string otherUser)
         {
             try
@@ -212,12 +204,9 @@ namespace Chat
                 lock (((ICollection)messageList).SyncRoot)
                 {
                     messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
-                    //MessageBox.Show(Convert.ToString(messageList.Count));
                     foreach (var x in messageList)
                     {
                         messageBlob msb = new messageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());
-                        //messageBlobList.Add(msb);
-                        //messagesFlowLayout.Controls.Add(msb);
                         messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
                     }
                 }
@@ -312,6 +301,36 @@ namespace Chat
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void textBox_searchContact_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_searchContact.Text != "")
+            {
+                string contactNameTemplate = textBox_searchContact.Text;
+                int size = 0;
+                ArrayList newUserList = new ArrayList();
+                contactListFlowLayoutPanel.Controls.Clear();
+                for (int i = 0; i < Login.userList.Count; i++)
+                {
+                    if (i != Login.currentUserIndex && Login.userList[i].username.Contains(contactNameTemplate))
+                    {
+                        ContactUserControl aux = new ContactUserControl(this);
+                        aux.UserName = Login.userList[i].username;
+                        aux.pictureBox1.ImageLocation = Login.userList[i].picture;
+                        aux.UserEntity = Login.userList[i];
+                        contactListFlowLayoutPanel.Controls.Add(aux);
+                    }
+                }
+            }
+            else
+            {
+                contactListFlowLayoutPanel.Controls.Clear();
+                for (int i = 0; i < contactList.Length; i++)
+                {
+                    contactListFlowLayoutPanel.Controls.Add(contactList[i]);
+                }
+            }
         }
     }
 

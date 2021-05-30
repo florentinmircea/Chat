@@ -45,8 +45,8 @@ namespace Chat
             this.faculty_combo = new System.Windows.Forms.ComboBox();
             this.email_text = new System.Windows.Forms.TextBox();
             this.username_text = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox_pass = new System.Windows.Forms.TextBox();
+            this.textBox_confirmPass = new System.Windows.Forms.TextBox();
             this.update_btn = new System.Windows.Forms.Button();
             this.delete_btn = new System.Windows.Forms.Button();
             this.label_account = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@ namespace Chat
             this.label1.Location = new System.Drawing.Point(86, 157);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.Size = new System.Drawing.Size(70, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Full Name";
             // 
@@ -70,7 +70,7 @@ namespace Chat
             this.label2.Location = new System.Drawing.Point(86, 207);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 23);
+            this.label2.Size = new System.Drawing.Size(33, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Age";
             // 
@@ -81,7 +81,7 @@ namespace Chat
             this.label3.Location = new System.Drawing.Point(86, 256);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 23);
+            this.label3.Size = new System.Drawing.Size(33, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "City";
             // 
@@ -92,7 +92,7 @@ namespace Chat
             this.label4.Location = new System.Drawing.Point(86, 307);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 23);
+            this.label4.Size = new System.Drawing.Size(76, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Picture link";
             // 
@@ -103,7 +103,7 @@ namespace Chat
             this.label5.Location = new System.Drawing.Point(86, 357);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 23);
+            this.label5.Size = new System.Drawing.Size(52, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Faculty";
             // 
@@ -114,7 +114,7 @@ namespace Chat
             this.label6.Location = new System.Drawing.Point(86, 406);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 23);
+            this.label6.Size = new System.Drawing.Size(41, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Email";
             // 
@@ -125,7 +125,7 @@ namespace Chat
             this.label7.Location = new System.Drawing.Point(86, 455);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 23);
+            this.label7.Size = new System.Drawing.Size(71, 19);
             this.label7.TabIndex = 6;
             this.label7.Text = "Username";
             // 
@@ -136,7 +136,7 @@ namespace Chat
             this.label8.Location = new System.Drawing.Point(86, 506);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 23);
+            this.label8.Size = new System.Drawing.Size(67, 19);
             this.label8.TabIndex = 7;
             this.label8.Text = "Password";
             // 
@@ -147,7 +147,7 @@ namespace Chat
             this.label9.Location = new System.Drawing.Point(86, 556);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(146, 23);
+            this.label9.Size = new System.Drawing.Size(120, 19);
             this.label9.TabIndex = 8;
             this.label9.Text = "Confirm Password";
             // 
@@ -157,7 +157,7 @@ namespace Chat
             this.fullName_text.Location = new System.Drawing.Point(306, 150);
             this.fullName_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.fullName_text.Name = "fullName_text";
-            this.fullName_text.Size = new System.Drawing.Size(306, 30);
+            this.fullName_text.Size = new System.Drawing.Size(306, 26);
             this.fullName_text.TabIndex = 9;
             // 
             // age_text
@@ -166,7 +166,7 @@ namespace Chat
             this.age_text.Location = new System.Drawing.Point(306, 204);
             this.age_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.age_text.Name = "age_text";
-            this.age_text.Size = new System.Drawing.Size(306, 30);
+            this.age_text.Size = new System.Drawing.Size(306, 26);
             this.age_text.TabIndex = 10;
             // 
             // city_text
@@ -175,7 +175,7 @@ namespace Chat
             this.city_text.Location = new System.Drawing.Point(306, 253);
             this.city_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.city_text.Name = "city_text";
-            this.city_text.Size = new System.Drawing.Size(306, 30);
+            this.city_text.Size = new System.Drawing.Size(306, 26);
             this.city_text.TabIndex = 11;
             // 
             // pictureLink_text
@@ -184,7 +184,7 @@ namespace Chat
             this.pictureLink_text.Location = new System.Drawing.Point(306, 304);
             this.pictureLink_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.pictureLink_text.Name = "pictureLink_text";
-            this.pictureLink_text.Size = new System.Drawing.Size(306, 30);
+            this.pictureLink_text.Size = new System.Drawing.Size(306, 26);
             this.pictureLink_text.TabIndex = 12;
             // 
             // faculty_combo
@@ -194,7 +194,7 @@ namespace Chat
             this.faculty_combo.Location = new System.Drawing.Point(306, 354);
             this.faculty_combo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.faculty_combo.Name = "faculty_combo";
-            this.faculty_combo.Size = new System.Drawing.Size(306, 31);
+            this.faculty_combo.Size = new System.Drawing.Size(306, 27);
             this.faculty_combo.TabIndex = 13;
             this.faculty_combo.DropDown += new System.EventHandler(this.faculty_combo_DropDown);
             // 
@@ -204,7 +204,7 @@ namespace Chat
             this.email_text.Location = new System.Drawing.Point(306, 403);
             this.email_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.email_text.Name = "email_text";
-            this.email_text.Size = new System.Drawing.Size(306, 30);
+            this.email_text.Size = new System.Drawing.Size(306, 26);
             this.email_text.TabIndex = 14;
             // 
             // username_text
@@ -214,28 +214,28 @@ namespace Chat
             this.username_text.Location = new System.Drawing.Point(306, 452);
             this.username_text.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.username_text.Name = "username_text";
-            this.username_text.Size = new System.Drawing.Size(306, 30);
+            this.username_text.Size = new System.Drawing.Size(306, 26);
             this.username_text.TabIndex = 15;
             // 
-            // textBox7
+            // textBox_pass
             // 
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(306, 503);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PasswordChar = '$';
-            this.textBox7.Size = new System.Drawing.Size(306, 30);
-            this.textBox7.TabIndex = 16;
+            this.textBox_pass.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_pass.Location = new System.Drawing.Point(306, 503);
+            this.textBox_pass.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.textBox_pass.Name = "textBox_pass";
+            this.textBox_pass.PasswordChar = '$';
+            this.textBox_pass.Size = new System.Drawing.Size(306, 26);
+            this.textBox_pass.TabIndex = 16;
             // 
-            // textBox8
+            // textBox_confirmPass
             // 
-            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(306, 553);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PasswordChar = '$';
-            this.textBox8.Size = new System.Drawing.Size(306, 30);
-            this.textBox8.TabIndex = 17;
+            this.textBox_confirmPass.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_confirmPass.Location = new System.Drawing.Point(306, 553);
+            this.textBox_confirmPass.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.textBox_confirmPass.Name = "textBox_confirmPass";
+            this.textBox_confirmPass.PasswordChar = '$';
+            this.textBox_confirmPass.Size = new System.Drawing.Size(306, 26);
+            this.textBox_confirmPass.TabIndex = 17;
             // 
             // update_btn
             // 
@@ -267,20 +267,20 @@ namespace Chat
             this.label_account.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_account.Location = new System.Drawing.Point(234, 39);
             this.label_account.Name = "label_account";
-            this.label_account.Size = new System.Drawing.Size(258, 51);
+            this.label_account.Size = new System.Drawing.Size(204, 41);
             this.label_account.TabIndex = 20;
             this.label_account.Text = "Account data";
             // 
             // AccountEdit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 755);
             this.Controls.Add(this.label_account);
             this.Controls.Add(this.delete_btn);
             this.Controls.Add(this.update_btn);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.textBox_confirmPass);
+            this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.username_text);
             this.Controls.Add(this.email_text);
             this.Controls.Add(this.faculty_combo);
@@ -325,8 +325,8 @@ namespace Chat
         private System.Windows.Forms.ComboBox faculty_combo;
         private System.Windows.Forms.TextBox email_text;
         private System.Windows.Forms.TextBox username_text;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox_pass;
+        private System.Windows.Forms.TextBox textBox_confirmPass;
         private System.Windows.Forms.Button update_btn;
         private System.Windows.Forms.Button delete_btn;
         private System.Windows.Forms.Label label_account;

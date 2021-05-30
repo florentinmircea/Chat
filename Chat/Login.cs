@@ -35,7 +35,6 @@ namespace Chat
             PaintForm();
             client = new FireSharp.FirebaseClient(config);
             if (client != null) { }
-            //MessageBox.Show("conn established"); 
             else
                 MessageBox.Show("Connection error");
         }
