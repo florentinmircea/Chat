@@ -10,15 +10,15 @@ using System.Windows;
 
 namespace Chat
 {
-    public class messageModel
+    public class MessageModel
     {
         private string currentUser;
         private string otherUser;
-        messageController mc;
+        MessageController mc;
         static Dictionary<string, Message> messageDictionary;
         static List<Message> messageList = new List<Message>();
         static List<Message> messageListNext = new List<Message>();
-        static List<messageBlob> messageBlobList = new List<messageBlob>();
+        static List<MessageBlob> messageBlobList = new List<MessageBlob>();
 
         public static IFirebaseConfig config = new FirebaseConfig
         {
@@ -27,7 +27,7 @@ namespace Chat
         };
         public static IFirebaseClient client;
 
-        public messageModel(string currentUser, string otherUser, messageController mc)
+        public MessageModel(string currentUser, string otherUser, MessageController mc)
         {
             this.currentUser = currentUser;
             this.otherUser = otherUser;

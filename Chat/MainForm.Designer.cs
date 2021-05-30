@@ -61,14 +61,12 @@ namespace Chat
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackBar_darkMode = new System.Windows.Forms.TrackBar();
             this.label_darkMode = new System.Windows.Forms.Label();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.groupBox_myProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_conv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_darkMode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitter1
@@ -399,11 +397,6 @@ namespace Chat
             this.label_darkMode.TabIndex = 16;
             this.label_darkMode.Text = "Dark mode";
             // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,7 +427,6 @@ namespace Chat
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_darkMode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,7 +463,6 @@ namespace Chat
         private ToolStripMenuItem violetBluesToolStripMenuItem;
         private TrackBar trackBar_darkMode;
         private Label label_darkMode;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         public FlowLayoutPanel messagesFlowLayout;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem editAccountToolStripMenuItem;

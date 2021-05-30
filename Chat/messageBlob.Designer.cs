@@ -1,6 +1,6 @@
 ﻿namespace Chat
 {
-    partial class messageBlob
+    partial class MessageBlob
     {
         /// <summary> 
         /// Required designer variable.
