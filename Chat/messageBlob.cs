@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Chat
 {
-    public partial class messageBlob : UserControl
+    public partial class MessageBlob : UserControl
     {
         private string message;
         private Boolean sender;
@@ -20,7 +20,7 @@ namespace Chat
         private int nrOfLines;
         private int fontSize = 16;
         private int nrOfCharsInRow = 24;
-        public messageBlob(string message, string timestamp, Boolean sender, string initial)
+        public MessageBlob(string message, string timestamp, Boolean sender, string initial)
         {
             double aux = Convert.ToDouble(message.Length) / nrOfCharsInRow;
             nrOfLines = Convert.ToInt32(Math.Ceiling(aux));

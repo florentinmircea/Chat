@@ -22,8 +22,8 @@ namespace Chat
         private Color[] colorScheme;
         private string colorMode;
         static List<Message> messageListLocal = new List<Message>();
-        static List<messageBlob> messageBlobList = new List<messageBlob>();
-        public messageController mc;
+        static List<MessageBlob> messageBlobList = new List<MessageBlob>();
+        public MessageController mc;
         ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
         public MainForm(Login point)
         {
@@ -58,7 +58,7 @@ namespace Chat
                 groupBox_conv.ForeColor = Color.Black;
                 groupBox_myProfile.ForeColor = Color.Black;
                 label_darkMode.ForeColor = Color.Black;
-                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                foreach (MessageBlob msb in messagesFlowLayout.Controls)
                     if (msb.getSender())
                     {
                         msb.BackColor = colorScheme[2];
@@ -84,7 +84,7 @@ namespace Chat
                 groupBox_conv.ForeColor = colorScheme[0];
                 groupBox_myProfile.ForeColor = colorScheme[0];
                 label_darkMode.ForeColor = colorScheme[0];
-                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                foreach (MessageBlob msb in messagesFlowLayout.Controls)
                     if (msb.getSender())
                     {
                         msb.BackColor = colorScheme[0];
@@ -184,9 +184,12 @@ namespace Chat
             labelFaculty.Text = Login.userList[Login.currentUserIndex].faculty;
             pictureBox1.ImageLocation = Login.userList[Login.currentUserIndex].picture;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            mc = new messageController(Login.userList[Login.currentUserIndex].username, "", this);
-            mc.updateOtherUser(contactList[0].UserEntity);
-            updateOtherUserData(contactList[0].UserEntity);
+            mc = new MessageController(Login.userList[Login.currentUserIndex].username, "", this);
+            if (contactListFlowLayoutPanel.Controls.Count > 0)
+            {
+                mc.updateOtherUser(contactList[0].UserEntity);
+                updateOtherUserData(contactList[0].UserEntity);
+            }
         }
 
         public void updateOtherUserData(User otherUserEntity)
@@ -206,7 +209,7 @@ namespace Chat
                     messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
                     foreach (var x in messageList)
                     {
-                        messageBlob msb = new messageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());
+                        MessageBlob msb = new MessageBlob(x.message, x.timestamp, x.sender == currentUser, Char.ToString(x.sender[0]).ToUpper());
                         messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Add(msb)));
                     }
                 }
@@ -258,7 +261,7 @@ namespace Chat
 
             if (colorMode.Equals("LIGHT"))
             {
-                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                foreach (MessageBlob msb in messagesFlowLayout.Controls)
                     if (msb.getSender())
                     {
                         msb.BackColor = colorScheme[2];
@@ -272,7 +275,7 @@ namespace Chat
             }
             else if (colorMode.Equals("DARK"))
             {
-                foreach (messageBlob msb in messagesFlowLayout.Controls)
+                foreach (MessageBlob msb in messagesFlowLayout.Controls)
                     if (msb.getSender())
                     {
                         msb.BackColor = colorScheme[0];

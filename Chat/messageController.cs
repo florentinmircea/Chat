@@ -8,22 +8,22 @@ using System.Windows;
 
 namespace Chat
 {
-    public class messageController
+    public class MessageController
     {
         private User otherUserEntity;
         private string currentUser;
         private string otherUser;
         private int milliseconds = 300;
         Boolean newOtherUser = false;
-        messageModel mm;
+        MessageModel mm;
         MainForm mf;
-        public messageController(string currentUser, string otherUser, MainForm mf)
+        public MessageController(string currentUser, string otherUser, MainForm mf)
         {
             this.currentUser = currentUser;
             this.otherUser = otherUser;
 
             this.mf = mf;
-            this.mm = new messageModel(currentUser, otherUser, this);
+            this.mm = new MessageModel(currentUser, otherUser, this);
             Thread thr = new Thread(new ThreadStart(this.permanentThread));
             thr.IsBackground = true;
             thr.Start();
