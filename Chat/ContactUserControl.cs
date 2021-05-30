@@ -47,19 +47,9 @@ namespace Chat
             set { _profilePicture = value; pictureBox1.Image = value; }
         }
 
-        private void ContactUserControl_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void paintPanel(Color color)
         {
             panel2.BackColor = color;
-        }
-
-        private void contactLastMessageLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void ContactUserControl_Click(object sender, EventArgs e)
@@ -67,7 +57,6 @@ namespace Chat
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
             MainForm.otherUser = _user;
-            //MessageBox.Show(_userName);
         }
 
         private void ContactUserControl_MouseClick(object sender, MouseEventArgs e)
@@ -75,7 +64,6 @@ namespace Chat
             mainForm.mc.updateOtherUser(_user);
             mainForm.updateOtherUserData(_user);
             MainForm.otherUser = _user;
-            //MessageBox.Show(_userName);
         }
 
         private void contactUsernameLabel_MouseClick(object sender, MouseEventArgs e)

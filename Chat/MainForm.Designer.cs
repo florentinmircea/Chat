@@ -169,6 +169,7 @@ namespace Chat
             this.textBox_searchContact.Name = "textBox_searchContact";
             this.textBox_searchContact.Size = new System.Drawing.Size(334, 29);
             this.textBox_searchContact.TabIndex = 7;
+            this.textBox_searchContact.TextChanged += new System.EventHandler(this.textBox_searchContact_TextChanged);
             // 
             // richTextBox_conv
             // 

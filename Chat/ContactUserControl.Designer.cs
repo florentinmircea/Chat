@@ -87,7 +87,6 @@ namespace Chat
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ContactUserControl";
             this.Size = new System.Drawing.Size(422, 71);
-            this.Load += new System.EventHandler(this.ContactUserControl_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ContactUserControl_MouseClick);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

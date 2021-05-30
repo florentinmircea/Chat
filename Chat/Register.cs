@@ -29,13 +29,18 @@ namespace Chat
         {
             bool isMailValid = false;
             string Email = email_Textbox.Text, Fullname = fullname_Textbox.Text, Username = username_Textbox.Text, Password = password_Textbox.Text, Confirmpassword = confirmPass_Textbox.Text, Picturelink = picture_Textbox.Text, City = city_Textbox.Text, Age = age_Textbox.Text, Faculty = comboBox1.SelectedItem.ToString();
+            int resultAge;
             if (Email.Length > 6)
             {
                 var addr = new System.Net.Mail.MailAddress(Email);
                 isMailValid = addr.Address == Email ? true : false;
             }
+            if (Picturelink.Length == 0)
+            {
+                Picturelink = "https://www.happitime.co.uk/images/uploads/profile.jpg";
+            }
 
-            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Convert.ToInt32(Age) > 17 && City.Length > 4 && comboBox1.SelectedIndex > -1)
+            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Int32.TryParse(Age, out resultAge) && resultAge >= 17 && City.Length > 4 && comboBox1.SelectedIndex > -1)
             {
                 if (Password == Confirmpassword && Password.Length >= 6)
                 {
@@ -65,10 +70,15 @@ namespace Chat
             }
             else
             {
-                if (Convert.ToInt32(Age) > 17)
+                if (!Int32.TryParse(Age, out resultAge))
                     MessageBox.Show("Complete all the fields!");
                 else
-                    MessageBox.Show("Minimum age 17!");
+                {
+                    if (resultAge < 17)
+                        MessageBox.Show("Minimum age 17!");
+                    else
+                        MessageBox.Show("Complete all the fields!");
+                }
             }
         }
 

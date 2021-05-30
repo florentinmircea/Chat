@@ -34,14 +34,12 @@ namespace Chat
             this.mc = mc;
             client = new FireSharp.FirebaseClient(config);
             if (client != null) { }
-            //MessageBox.Show("conn established"); 
             else
                 MessageBox.Show("Connection error");
         }
 
         public async void messageUpdateMessage(string currentUser, string otherUser, Boolean newOtherUser)
         {
-            //MessageBox.Show(currentUser + ", " + otherUser);
             string firstUser;
             string secondUser;
 
@@ -74,7 +72,6 @@ namespace Chat
                         }
                         //order messages
                         messageList = messageList.OrderBy(o =>  o.dts).ToList();
-                        //MessageBox.Show(Convert.ToString(messageList.Count));
                         if (messageList.Count > messageListNext.Count || newOtherUser)
                         {
                             mc.updateView(messageList, currentUser, otherUser);

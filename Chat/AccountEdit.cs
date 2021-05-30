@@ -66,14 +66,19 @@ namespace Chat
         private async void update_btn_Click(object sender, EventArgs e)
         {
             bool isMailValid = false;
-            string Email = email_text.Text, Fullname = fullName_text.Text, Username = username_text.Text, Password = textBox7.Text, Confirmpassword = textBox8.Text, Picturelink = pictureLink_text.Text, City = city_text.Text, Age = age_text.Text, Faculty = faculty_combo.SelectedItem.ToString();
+            string Email = email_text.Text, Fullname = fullName_text.Text, Username = username_text.Text, Password = textBox_pass.Text, Confirmpassword = textBox_confirmPass.Text, Picturelink = pictureLink_text.Text, City = city_text.Text, Age = age_text.Text, Faculty = faculty_combo.SelectedItem.ToString();
+            int resultAge;
             if (Email.Length > 6)
             {
                 var addr = new System.Net.Mail.MailAddress(Email);
                 isMailValid = addr.Address == Email ? true : false;
             }
+            if (Picturelink.Length == 0)
+            {
+                Picturelink = "https://www.happitime.co.uk/images/uploads/profile.jpg";
+            }
 
-            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Convert.ToInt32(Age) > 17 && City.Length > 4 && faculty_combo.SelectedIndex > -1)
+            if (isMailValid && Fullname.Length > 6 && Username.Length > 6 && Picturelink.Length > 6 && Int32.TryParse(Age, out resultAge) && resultAge >= 17 && City.Length > 4 && faculty_combo.SelectedIndex > -1)
             {
                 if (Password == Confirmpassword && Password.Length >= 6)
                 {
@@ -104,10 +109,15 @@ namespace Chat
             }
             else
             {
-                if (Convert.ToInt32(Age) > 17)
+                if (!Int32.TryParse(Age, out resultAge))
                     MessageBox.Show("Complete all the fields!");
                 else
-                    MessageBox.Show("Minimum age 17!");
+                {
+                    if (resultAge < 17)
+                        MessageBox.Show("Minimum age 17!");
+                    else
+                        MessageBox.Show("Complete all the fields!");
+                }
             }
         }
 
@@ -148,6 +158,8 @@ namespace Chat
             pictureLink_text.Text = Login.userList[Login.currentUserIndex].picture;
             email_text.Text = Login.userList[Login.currentUserIndex].email;
             username_text.Text = Login.userList[Login.currentUserIndex].username;
+            textBox_pass.Text = Login.userList[Login.currentUserIndex].password;
+            textBox_confirmPass.Text = Login.userList[Login.currentUserIndex].password;
         }
 
         public static void Get_faculties()
