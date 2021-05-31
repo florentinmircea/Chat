@@ -17,6 +17,7 @@ namespace Chat
         Boolean newOtherUser = false;
         MessageModel mm;
         MainForm mf;
+
         public MessageController(string currentUser, string otherUser, MainForm mf)
         {
             this.currentUser = currentUser;
@@ -54,6 +55,5 @@ namespace Chat
             }
 
         }
-
     }
 }

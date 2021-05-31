@@ -20,6 +20,7 @@ namespace Chat
         private int nrOfLines;
         private int fontSize = 16;
         private int nrOfCharsInRow = 24;
+
         public MessageBlob(string message, string timestamp, Boolean sender, string initial)
         {
             double aux = Convert.ToDouble(message.Length) / nrOfCharsInRow;

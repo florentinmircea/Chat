@@ -25,6 +25,7 @@ namespace Chat
         static List<MessageBlob> messageBlobList = new List<MessageBlob>();
         public MessageController mc;
         ContactUserControl[] contactList = new ContactUserControl[Login.userList.Count];
+
         public MainForm(Login point)
         {
             pointer = point;
@@ -33,8 +34,8 @@ namespace Chat
             colorScheme = new Color[] { Color.FromArgb(221, 228, 225), Color.FromArgb(112, 164, 194), Color.FromArgb(53, 58, 90) };
             colorMode = "LIGHT";
             RefreshColorScheme(colorMode);
-
         }
+
         private void SetColorScheme(Color lightColor, Color mediumColor, Color darkColor)
         {
             colorScheme[0] = lightColor;
@@ -185,11 +186,11 @@ namespace Chat
             pictureBox1.ImageLocation = Login.userList[Login.currentUserIndex].picture;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             mc = new MessageController(Login.userList[Login.currentUserIndex].username, "", this);
-            if (contactListFlowLayoutPanel.Controls.Count > 0)
-            {
-                mc.updateOtherUser(contactList[0].UserEntity);
-                updateOtherUserData(contactList[0].UserEntity);
-            }
+            //if (contactListFlowLayoutPanel.Controls.Count > 0)
+            //{
+            //    mc.updateOtherUser(contactList[0].UserEntity);
+            //    updateOtherUserData(contactList[0].UserEntity);
+            //}
         }
 
         public void updateOtherUserData(User otherUserEntity)
@@ -258,35 +259,7 @@ namespace Chat
         private void messagesFlowLayout_ControlAdded(object sender, ControlEventArgs e)
         {
             messagesFlowLayout.ScrollControlIntoView(e.Control);
-
-            if (colorMode.Equals("LIGHT"))
-            {
-                foreach (MessageBlob msb in messagesFlowLayout.Controls)
-                    if (msb.getSender())
-                    {
-                        msb.BackColor = colorScheme[2];
-                        msb.ForeColor = colorScheme[0];
-                    }
-                    else
-                    {
-                        msb.BackColor = colorScheme[1];
-                        msb.ForeColor = Color.Black;
-                    }
-            }
-            else if (colorMode.Equals("DARK"))
-            {
-                foreach (MessageBlob msb in messagesFlowLayout.Controls)
-                    if (msb.getSender())
-                    {
-                        msb.BackColor = colorScheme[0];
-                        msb.ForeColor = Color.Black;
-                    }
-                    else
-                    {
-                        msb.BackColor = colorScheme[2];
-                        msb.ForeColor = colorScheme[0];
-                    }
-            }
+            RefreshColorScheme(colorMode);
         }
 
         private void editAccountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,7 +284,6 @@ namespace Chat
             if (textBox_searchContact.Text != "")
             {
                 string contactNameTemplate = textBox_searchContact.Text;
-                int size = 0;
                 ArrayList newUserList = new ArrayList();
                 contactListFlowLayoutPanel.Controls.Clear();
                 for (int i = 0; i < Login.userList.Count; i++)
@@ -334,7 +306,7 @@ namespace Chat
                     contactListFlowLayoutPanel.Controls.Add(contactList[i]);
                 }
             }
+            RefreshColorScheme(colorMode);
         }
     }
-
 }

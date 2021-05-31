@@ -13,7 +13,6 @@ namespace Chat
     public partial class ContactUserControl : UserControl
     {
         MainForm mainForm;
-
         private User _user;
 
         public User UserEntity
@@ -21,7 +20,6 @@ namespace Chat
             get { return _user; }
             set { _user = value; }
         }
-
 
         public ContactUserControl(MainForm mainForm)
         {

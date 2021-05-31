@@ -18,6 +18,7 @@ namespace Chat
         Login pointer;
         static Dictionary<string, Faculty> facultiesDictionary;
         static List<Faculty> facultiesList = new List<Faculty>();
+
         public Register(Login point)
         {
             pointer = point;
