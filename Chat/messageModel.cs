@@ -80,7 +80,6 @@ namespace Chat
                     }
                 }
                 catch { };
-   
             }
             else if (messageDictionary == null && newOtherUser)
             {
@@ -91,11 +90,6 @@ namespace Chat
                     mc.updateView(messageList, currentUser, otherUser);
                 }
             }
-
-
-
         }
-
-
     }
 }

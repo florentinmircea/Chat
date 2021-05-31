@@ -18,6 +18,7 @@ namespace Chat
         MainForm pointerMainForm;
         static Dictionary<string, Faculty> facultiesDictionary;
         static List<Faculty> facultiesList = new List<Faculty>();
+
         public AccountEdit(Login point, MainForm pointerMain)
         {
             pointer = point;
