@@ -172,7 +172,6 @@ namespace Chat
         {
             messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
             Login.userDictionary.Clear();
-            MessageBox.Show(Login.userList.Count.ToString());
             Login.userList.Clear();
             Login.userKeys.Clear();
             for (int i = 0; i < contactList.Length; i++)
