@@ -54,7 +54,10 @@ namespace Chat
                 pointerMainForm.Close();
                 Login.userDictionary.Clear();
                 Login.userList.Clear();
-                Login.Get_users();
+                if (Login.running == false)
+                {
+                    Login.Get_users();
+                }
                 pointer.textBox1.Text = "";
                 pointer.ActiveControl = pointer.textBox1;
             }
@@ -62,18 +65,27 @@ namespace Chat
             {
                 MessageBox.Show("ERROR");
             }
+            facultiesDictionary.Clear();
+            facultiesList.Clear();
+            faculty_combo.Items.Clear();
         }
 
         private async void update_btn_Click(object sender, EventArgs e)
         {
-            // MessageBox.Show(Login.userKeys[Login.currentUserIndex]);
             bool isMailValid = false;
             string Email = email_text.Text, Fullname = fullName_text.Text, Username = username_text.Text, Password = textBox_pass.Text, Confirmpassword = textBox_confirmPass.Text, Picturelink = pictureLink_text.Text, City = city_text.Text, Age = age_text.Text, Faculty = faculty_combo.SelectedItem.ToString();
             int resultAge;
             if (Email.Length > 6)
             {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                isMailValid = addr.Address == Email ? true : false;
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(Email);
+                    isMailValid = addr.Address == Email ? true : false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wrong email format");
+                }
             }
             if (Picturelink.Length == 0)
             {
@@ -101,7 +113,14 @@ namespace Chat
                     Login.userDictionary.Clear();
                     Login.userList.Clear();
                     Login.userKeys.Clear();
-                    Login.Get_users();
+                    facultiesDictionary.Clear();
+                    facultiesList.Clear();
+                    faculty_combo.Items.Clear();
+                    if (Login.running == false)
+                    {
+                        Login.Get_users();
+                    }
+                    
                     this.Close();
                     pointerMainForm.Close();
                 }
@@ -177,6 +196,13 @@ namespace Chat
                     facultiesList.Add(item.Value);
                 }
             }
+        }
+
+        private void AccountEdit_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            facultiesDictionary.Clear();
+            facultiesList.Clear();
+            faculty_combo.Items.Clear();
         }
     }
 }

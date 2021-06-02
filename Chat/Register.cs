@@ -33,8 +33,15 @@ namespace Chat
             int resultAge;
             if (Email.Length > 6)
             {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                isMailValid = addr.Address == Email ? true : false;
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(Email);
+                    isMailValid = addr.Address == Email ? true : false;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Wrong email format");
+                }
             }
             if (Picturelink.Length == 0)
             {
@@ -61,7 +68,13 @@ namespace Chat
                     Login.userDictionary.Clear();
                     Login.userList.Clear();
                     Login.userKeys.Clear();
-                    Login.Get_users();
+                    facultiesDictionary.Clear();
+                    facultiesList.Clear();
+                    comboBox1.Items.Clear();
+                    if (Login.running == false)
+                    {
+                        Login.Get_users();
+                    }
                     this.Close();
                     pointer.Show();
                 }
@@ -86,6 +99,9 @@ namespace Chat
 
         private void Register_FormClosing(object sender, FormClosingEventArgs e)
         {
+            facultiesDictionary.Clear();
+            facultiesList.Clear();
+            comboBox1.Items.Clear();
             pointer.Show();
         }
 

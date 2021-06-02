@@ -18,6 +18,7 @@ namespace Chat
     public partial class Login : Form
     {
         public static bool isAuth = false;
+        public static bool running = false;
         public static int currentUserIndex;
         public static Dictionary<string, User> userDictionary;
         public static List<User> userList = new List<User>();
@@ -41,6 +42,7 @@ namespace Chat
 
         public static async void Get_users()
         {
+            running = true;
             var response = await client.GetAsync("users");
             userDictionary = response.ResultAs<Dictionary<string, User>>();
             if (userDictionary != null)
@@ -52,6 +54,7 @@ namespace Chat
                     userKeys.Add(item.Key);
                 }
             }
+            running = false;
         }
 
         private void button_login_Click(object sender, EventArgs e)

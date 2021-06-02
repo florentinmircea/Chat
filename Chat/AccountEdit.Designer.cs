@@ -301,6 +301,7 @@ namespace Chat
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "AccountEdit";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AccountEdit_FormClosing);
             this.Load += new System.EventHandler(this.AccountEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
