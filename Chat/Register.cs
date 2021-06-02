@@ -60,6 +60,7 @@ namespace Chat
                     MessageBox.Show("User created!");
                     Login.userDictionary.Clear();
                     Login.userList.Clear();
+                    Login.userKeys.Clear();
                     Login.Get_users();
                     this.Close();
                     pointer.Show();

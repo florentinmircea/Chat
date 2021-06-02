@@ -171,8 +171,17 @@ namespace Chat
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             messagesFlowLayout.Invoke((MethodInvoker)(() => messagesFlowLayout.Controls.Clear()));
-            pointer.Show();
+            Login.userDictionary.Clear();
+            MessageBox.Show(Login.userList.Count.ToString());
+            Login.userList.Clear();
+            Login.userKeys.Clear();
+            for (int i = 0; i < contactList.Length; i++)
+            {
+                contactList[i] = null;
+            }
+            Login.Get_users();
             Login.isAuth = false;
+            pointer.Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
