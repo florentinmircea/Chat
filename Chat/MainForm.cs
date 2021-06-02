@@ -178,7 +178,10 @@ namespace Chat
             {
                 contactList[i] = null;
             }
-            Login.Get_users();
+            if (Login.running == false)
+            {
+                Login.Get_users();
+            }
             Login.isAuth = false;
             pointer.Show();
         }

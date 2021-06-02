@@ -71,7 +71,10 @@ namespace Chat
                     facultiesDictionary.Clear();
                     facultiesList.Clear();
                     comboBox1.Items.Clear();
-                    Login.Get_users();
+                    if (Login.running == false)
+                    {
+                        Login.Get_users();
+                    }
                     this.Close();
                     pointer.Show();
                 }

@@ -54,7 +54,10 @@ namespace Chat
                 pointerMainForm.Close();
                 Login.userDictionary.Clear();
                 Login.userList.Clear();
-                Login.Get_users();
+                if (Login.running == false)
+                {
+                    Login.Get_users();
+                }
                 pointer.textBox1.Text = "";
                 pointer.ActiveControl = pointer.textBox1;
             }
@@ -113,7 +116,11 @@ namespace Chat
                     facultiesDictionary.Clear();
                     facultiesList.Clear();
                     faculty_combo.Items.Clear();
-                    Login.Get_users();
+                    if (Login.running == false)
+                    {
+                        Login.Get_users();
+                    }
+                    
                     this.Close();
                     pointerMainForm.Close();
                 }
