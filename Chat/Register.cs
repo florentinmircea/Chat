@@ -33,8 +33,15 @@ namespace Chat
             int resultAge;
             if (Email.Length > 6)
             {
-                var addr = new System.Net.Mail.MailAddress(Email);
-                isMailValid = addr.Address == Email ? true : false;
+                try
+                {
+                    var addr = new System.Net.Mail.MailAddress(Email);
+                    isMailValid = addr.Address == Email ? true : false;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Wrong email format");
+                }
             }
             if (Picturelink.Length == 0)
             {
