@@ -61,6 +61,9 @@ namespace Chat
                     Login.userDictionary.Clear();
                     Login.userList.Clear();
                     Login.userKeys.Clear();
+                    facultiesDictionary.Clear();
+                    facultiesList.Clear();
+                    comboBox1.Items.Clear();
                     Login.Get_users();
                     this.Close();
                     pointer.Show();
@@ -86,6 +89,9 @@ namespace Chat
 
         private void Register_FormClosing(object sender, FormClosingEventArgs e)
         {
+            facultiesDictionary.Clear();
+            facultiesList.Clear();
+            comboBox1.Items.Clear();
             pointer.Show();
         }
 
