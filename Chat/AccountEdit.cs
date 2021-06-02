@@ -66,6 +66,7 @@ namespace Chat
 
         private async void update_btn_Click(object sender, EventArgs e)
         {
+            // MessageBox.Show(Login.userKeys[Login.currentUserIndex]);
             bool isMailValid = false;
             string Email = email_text.Text, Fullname = fullName_text.Text, Username = username_text.Text, Password = textBox_pass.Text, Confirmpassword = textBox_confirmPass.Text, Picturelink = pictureLink_text.Text, City = city_text.Text, Age = age_text.Text, Faculty = faculty_combo.SelectedItem.ToString();
             int resultAge;
@@ -99,6 +100,7 @@ namespace Chat
                     MessageBox.Show("User updated! \nLog in again to see the changes ");
                     Login.userDictionary.Clear();
                     Login.userList.Clear();
+                    Login.userKeys.Clear();
                     Login.Get_users();
                     this.Close();
                     pointerMainForm.Close();
